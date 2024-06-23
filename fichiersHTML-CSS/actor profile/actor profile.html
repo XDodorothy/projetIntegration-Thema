@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Actor Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="navbar-offset">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <div class="container-fluid navbar-container mx-auto">
+        <h4><a class="navbar-brand" href="#" style="color:#D7BE82;">ThéMa</a></h4>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Movies
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul>
+                  <li><a class="dropdown-item" href="#">Action & Adventure</a></li>
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Adventure</a></li>
+                  <li><a class="dropdown-item" href="#">Crime</a></li>
+                  <li><a class="dropdown-item" href="#">Thriller</a></li>
+                  <li><a class="dropdown-item" href="#">War</a></li>
+                  <li><a class="dropdown-item" href="#">Western</a></li>
+                </ul>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Science Fiction & Fantasy</a></li>
+                  <li><a class="dropdown-item" href="#">Science Fiction</a></li>
+                  <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                  <li><a class="dropdown-item" href="#">Horror</a></li>
+                </ul>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Drama & Romance</a></li>
+                  <li><a class="dropdown-item" href="#">Drama</a></li>
+                  <li><a class="dropdown-item" href="#">Romance</a></li>
+                  <li><a class="dropdown-item" href="#">History</a></li>
+                </ul>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Various</a></li>
+                  <li><a class="dropdown-item" href="#">Comedy</a></li>
+                  <li><a class="dropdown-item" href="#">Animation</a></li>
+                  <li><a class="dropdown-item" href="#">Documentary</a></li>
+                  <li><a class="dropdown-item" href="#">Family</a></li>
+                  <li><a class="dropdown-item" href="#">Mystery</a></li>
+                  <li><a class="dropdown-item" href="#">Music</a></li>
+                  <li><a class="dropdown-item" href="#">TV Movie</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase" href="#">Actors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase" href="#">About</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 custom-placeholder" type="search" placeholder="Research"
+              aria-label="Search">
+            <button class="btn btn-outline-light custom-button" type="submit">
+              <i class="fa-solid fa-magnifying-glass" style="color: #d4c087;"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid py-5">
+      <div class="row align-items-start">
+        <div class="col-12 col-md-4 mb-3 mb-md-0 text-center">
+          <img src="actor.webp" class="img-fluid rounded actor-image" alt="Affiche du film">
+        </div>
+        <div class="col-12 col-md-8 actor-details">
+          <h4 class="font-weight-bold py-3">Actor's Name</h4>
+          <h5 class="font-weight-bold">Personal Info :</h5>
+          <p class="py-3"><strong>Known for :</strong> Acting</p>
+          <p class="py-3"><strong>Known Credit :</strong> 115</p>
+          <p class="py-3"><strong>Gender :</strong> Female</p>
+          <p class="py-3"><strong>Birthday :</strong> April 30, 1982</p>
+          <p class="py-3 biography text-justify">
+            <strong>Biography :</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+            took a galley of type and scrambled it to make a type specimen book. It has survived not only five
+            centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <p class="py-3"><a href="#" class="read-more-link text-primary font-weight-bold">Read more ...</a></p>
+          <p class="py-3 additional-text text-justify" style="display: none;">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+            took a galley of type and scrambled it to make a type specimen book. It has survived not only five
+            centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
+            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
+            recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="game-section">
+      <div class="carousel-title">
+        <h4>Movies Playing into</h4>
+      </div>
+      <h4 class="line-title py-3 my-3">Known for</h4>
+      <div class="owl-carousel custom-carousel owl-theme">
+        <div class="item active" style="background-image: url(movie1.jpg);">
+          <div class="item-desc">
+            <h5>La Planète des Singes</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie2.jpg);">
+          <div class="item-desc">
+            <h5>Civil War</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie3.jpg);">
+          <div class="item-desc">
+            <h5>RDR 2</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie4.jpg);">
+          <div class="item-desc">
+            <h5>Les Cartes du Mal</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie5.jpg);">
+          <div class="item-desc">
+            <h5>Atlas</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie6.jpg);">
+          <div class="item-desc">
+            <h5>The Fall Guy</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+      </div>
+      <h4 class="line-title py-3 my-3">Other Movies</h4>
+      <div class="owl-carousel custom-carousel owl-theme">
+        <div class="item active" style="background-image: url(movie1.jpg);">
+          <div class="item-desc">
+            <h5>La Planète des Singes</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie2.jpg);">
+          <div class="item-desc">
+            <h5>Civil War</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie3.jpg);">
+          <div class="item-desc">
+            <h5>Godzilla x Kong : Le Nouvel Empire</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie4.jpg);">
+          <div class="item-desc">
+            <h5>Les Cartes du Mal</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie5.jpg);">
+          <div class="item-desc">
+            <h5>Atlas</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(movie6.jpg);">
+          <div class="item-desc">
+            <h5>The Fall Guy</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="background-color">
+    <div class="container-fluid">
+      <div class="row m-0">
+        <div class="col-md-4 col-sm-12 text-center text-md-start">
+          <h5 class="text-md-start font-weight-bold">Quick links</h5>
+          <ul class="list-unstyled text-md-start">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#actors">Actors</a></li>
+            <li><a href="#movies">Movies</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center text-md-start">
+          <h5 class="text-center font-weight-bold">Follow us !</h5>
+          <div class="social-icons text-center pt-3">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 512 512">
+              <path fill="#577063"
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" height="37" width="37" viewBox="0 0 320 512">
+              <path fill="#577063"
+                d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+            </svg>
+          </div>
+          <div class="footer-contact text-center pb-3">
+            <p class="pb-3">contact@thema.ca</p>
+            <p>+1 (555) 123-4567</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 text-center ">
+          <div class="footer-logo text-md-end">
+            <img src="logo.png" alt="Your Logo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="footer text-center">&copy;<span id="year"> </span><span>ThéMa. All rights reserved.</span></div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
