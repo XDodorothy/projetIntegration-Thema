@@ -418,7 +418,6 @@ footer h5 {
 }
 
 /*-----caroussel-Movies--------*/
-@charset "utf-8";
 
 * {
   margin: 0px;
@@ -566,7 +565,7 @@ button {
   position: relative;
   z-index: 5;
 }
-/------------- responsive css ------------/
+/*------------- responsive css ------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
   h2 {
