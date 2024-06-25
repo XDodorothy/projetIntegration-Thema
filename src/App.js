@@ -1,15 +1,18 @@
 import React from 'react';
-import './App.css';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import ActorSheet from './pages/ActorSheet';
+
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      {/* Add your main content here */}
-      <Footer />
-    </div>
+<BrowserRouter>
+    <Switch>
+
+      <Route path="/" exact component={ActorSheet}/> 
+      <Route exact component={NotFound} /> {/* pas de PATH car cette page apparaît quand la page recherchée n'existe pas */}
+    </Switch>
+  </BrowserRouter>
   );
 }
 

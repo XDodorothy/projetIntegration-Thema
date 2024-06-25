@@ -1,6 +1,5 @@
 
 import '../styles/Navbar.css' // Custom CSS for Navbar
-
 import React, { useEffect } from 'react';
 
 const Navbar = () => {
@@ -82,7 +81,7 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-    );
+    )
   }
   
   export default Navbar;
