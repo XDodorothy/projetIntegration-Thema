@@ -1,52 +1,59 @@
-
-import '../styles/actorsheet.css' // Custom CSS for Navbar
+import '../styles/actorsheet.css'; // Custom CSS for Navbar
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 
 const ActorSheet = () => {
-    useEffect(() => {
-      const loadScripts = async () => {
-        const bootstrapScript = document.createElement('script');
-        bootstrapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js';
-        bootstrapScript.async = true;
-        document.body.appendChild(bootstrapScript);
-  
-        const jqueryScript = document.createElement('script');
-        jqueryScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js';
-        jqueryScript.async = true;
-        document.body.appendChild(jqueryScript);
-  
-        const owlCarouselScript = document.createElement('script');
-        owlCarouselScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js';
-        owlCarouselScript.async = true;
-        document.body.appendChild(owlCarouselScript);
-  
-        jqueryScript.onload = () => {
-          window.$ = window.jQuery;
-          owlCarouselScript.onload = () => {
-            window.$('.owl-carousel').owlCarousel({
-              loop: true,
-              margin: 10,
-              nav: true,
-              responsive: {
-                0: { items: 1 },
-                600: { items: 3 },
-                1000: { items: 5 }
-              }
-            });
-          };
-        };
-  
-        return () => {
-          document.body.removeChild(bootstrapScript);
-          document.body.removeChild(jqueryScript);
-          document.body.removeChild(owlCarouselScript);
+  useEffect(() => {
+    const loadScripts = async () => {
+      const jqueryScript = document.createElement('script');
+      jqueryScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js';
+      jqueryScript.async = true;
+      document.body.appendChild(jqueryScript);
+
+      const owlCarouselScript = document.createElement('script');
+      owlCarouselScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js';
+      owlCarouselScript.async = true;
+      document.body.appendChild(owlCarouselScript);
+
+      jqueryScript.onload = () => {
+        window.$ = window.jQuery;
+        owlCarouselScript.onload = () => {
+          window.$('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+              0: { items: 1 },
+              600: { items: 3 },
+              1000: { items: 5 }
+            }
+          });
         };
       };
-  
-      loadScripts();
-    }, []);
+
+      return () => {
+        document.body.removeChild(jqueryScript);
+        document.body.removeChild(owlCarouselScript);
+      };
+    };
+
+    loadScripts();
+
+    // Add event listener for read more button
+    const readMoreButton = document.querySelector('.read-more-link');
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const additionalText = document.querySelector('.additional-text');
+        if (additionalText) {
+          additionalText.style.display = 'block';
+          readMoreButton.style.display = 'none';
+        }
+      });
+    }
+
+  }, []);
 
   return (
     <div>
@@ -77,8 +84,9 @@ const ActorSheet = () => {
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
               took a galley of type and scrambled it to make a type specimen book. It has survived not only five
               centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-              recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and plus
+              récemment avec des logiciels de publication assistée par ordinateur comme Aldus PageMaker y compris
+              des versions de Lorem Ipsum.
             </p>
           </div>
         </div>
