@@ -1,9 +1,21 @@
-import '../styles/actorsheet.css'; // Custom CSS for Navbar
+import '../styles/actorsheet.css'; 
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 
+
 const ActorSheet = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '/script.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+  
   useEffect(() => {
     const loadScripts = async () => {
       const jqueryScript = document.createElement('script');
