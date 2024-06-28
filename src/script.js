@@ -1,9 +1,13 @@
-/* eslint-disable no-undef */
 import $ from 'jquery';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
+import 'owl.carousel';
 
+// Désactiver les avertissements ESLint pour $
+/* eslint-disable no-undef */
 
 /*---------caroussel movie--------*/
-export const initCarousel = () => {
+/* export const initCarousel = () => {
   $(".custom-carousel").owlCarousel({
     autoWidth: true,
     loop: true
@@ -13,7 +17,7 @@ export const initCarousel = () => {
     $(this).toggleClass("active");
   });
 };
-
+ */
 /*----------year-----------*/
 export const updateYear = () => {
   let yearElement = document.querySelector("#year");

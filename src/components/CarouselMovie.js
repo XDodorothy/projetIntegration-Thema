@@ -1,59 +1,20 @@
+import React,{Component} from 'react';  
+import OwlCarousel from 'react-owl-carousel';  
+import 'owl.carousel/dist/assets/owl.carousel.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css';  
 import '../styles/actorsheet.css'; 
-import React, { useEffect } from 'react';
-import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
-import * as scriptFunctions from '../script';
-//import CarouselMovie from '../components/CarouselMovie';
 
+export class CarouselMovie extends Component {  
 
-const ActorSheet = () => {
-  useEffect(() => {
-    //scriptFunctions.initCarousel();
-    scriptFunctions.updateYear();
-    scriptFunctions.initReadMore();
-  }, []);
+          render()  
 
-  return (
+          {      
+
+            return (  
     <div>
-      <Navigation />
-      <div className="container-fluid py-5">
-        <div className="row align-items-start">
-          <div className="col-12 col-md-4 mb-3 mb-md-0 text-center">
-            <img src="actor.webp" className="img-fluid rounded actor-image" alt="Affiche du film" />
-          </div>
-          <div className="col-12 col-md-8 actor-details">
-            <h4 className="font-weight-bold py-3">Actor's Name</h4>
-            <h5 className="font-weight-bold">Personal Info :</h5>
-            <p className="py-3"><strong>Known for :</strong> Acting</p>
-            <p className="py-3"><strong>Known Credit :</strong> 115</p>
-            <p className="py-3"><strong>Gender :</strong> Female</p>
-            <p className="py-3"><strong>Birthday :</strong> April 30, 1982</p>
-            <p className="py-3 biography text-justify">
-              <strong>Biography :</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-              took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-              recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-            <p className="py-3"><a href="#" className="read-more-link text-primary font-weight-bold">Read more ...</a></p>
-            <p className="py-3 additional-text text-justify" style={{ display: 'none' }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-              took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and plus
-              récemment avec des logiciels de publication assistée par ordinateur comme Aldus PageMaker y compris
-              des versions de Lorem Ipsum.
-            </p>
-          </div>
-        </div>
-      </div>
       <div className="game-section">
-        <div className="carousel-title">
-          <h4>Movies Playing into</h4>
-        </div>
         <h4 className="line-title py-3 my-3">Known for</h4>
+        <OwlCarousel>
         <div className="owl-carousel custom-carousel owl-theme">
           <div className="item active" style={{ backgroundImage: 'url(movie1.jpg)' }}>
             <div className="item-desc">
@@ -92,7 +53,9 @@ const ActorSheet = () => {
             </div>
           </div>
         </div>
+        </OwlCarousel>
         <h4 className="line-title py-3 my-3">Other Movies</h4>
+        <OwlCarousel>
         <div className="owl-carousel custom-carousel owl-theme">
           <div className="item active" style={{ backgroundImage: 'url(movie1.jpg)' }}>
             <div className="item-desc">
@@ -131,12 +94,10 @@ const ActorSheet = () => {
             </div>
           </div>
         </div>
+        </OwlCarousel>
       </div>
-
-      <Footer />
     </div>
   );
-};
-
+}};
   
-  export default ActorSheet;
+  export default CarouselMovie;

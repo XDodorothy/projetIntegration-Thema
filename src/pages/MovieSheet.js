@@ -1,14 +1,15 @@
-import '../styles/moviesheet.css'; // Custom CSS for Navbar
+import '../styles/moviesheet.css'; 
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import * as scriptFunctions from '../script';
 
 
+
 const MovieSheet = () => {
 
     useEffect(() => {
-      scriptFunctions.initCarousel();
+      //scriptFunctions.initCarousel();
       scriptFunctions.updateYear();
       scriptFunctions.initReadMore();
     }, []);
