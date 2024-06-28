@@ -1,18 +1,12 @@
 
 import '../styles/Navbar.css' // Custom CSS for Navbar
 import React, { useEffect } from 'react';
+import * as scriptFunctions from '../script';
 
 const Navbar = () => {
-    useEffect(() => {
-      const bootstrapScript = document.createElement('script');
-      bootstrapScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js';
-      bootstrapScript.async = true;
-      document.body.appendChild(bootstrapScript);
-  
-      return () => {
-        document.body.removeChild(bootstrapScript);
-      };
-    }, []);
+  useEffect(() => {
+    scriptFunctions.initNavbarScroll();
+  }, []);
   
     return (
       <div className="navbar-offset">

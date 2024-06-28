@@ -2,66 +2,16 @@ import '../styles/moviesheet.css'; // Custom CSS for Navbar
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import * as scriptFunctions from '../script';
+
 
 const MovieSheet = () => {
-    const handleClickGoBack = () => {
-        // Code pour gérer le clic sur le bouton gauche
-      };
-    
-      const handleClickGoAhead = () => {
-        // Code pour gérer le clic sur le bouton droit
-      };
-  useEffect(() => {
-    const loadScripts = async () => {
-      const jqueryScript = document.createElement('script');
-      jqueryScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js';
-      jqueryScript.async = true;
-      document.body.appendChild(jqueryScript);
 
-      const owlCarouselScript = document.createElement('script');
-      owlCarouselScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js';
-      owlCarouselScript.async = true;
-      document.body.appendChild(owlCarouselScript);
-
-      jqueryScript.onload = () => {
-        window.$ = window.jQuery;
-        owlCarouselScript.onload = () => {
-          window.$('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-              0: { items: 1 },
-              600: { items: 3 },
-              1000: { items: 5 }
-            }
-          });
-        };
-      };
-
-
-      return () => {
-        document.body.removeChild(jqueryScript);
-        document.body.removeChild(owlCarouselScript);
-      };
-    };
-
-    loadScripts();
-
-    // Add event listener for read more button
-    const readMoreButton = document.querySelector('.read-more-link');
-    if (readMoreButton) {
-      readMoreButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const additionalText = document.querySelector('.additional-text');
-        if (additionalText) {
-          additionalText.style.display = 'block';
-          readMoreButton.style.display = 'none';
-        }
-      });
-    }
-
-  }, []);
+    useEffect(() => {
+      scriptFunctions.initCarousel();
+      scriptFunctions.updateYear();
+      scriptFunctions.initReadMore();
+    }, []);
 
   return (
     <div>
@@ -117,7 +67,7 @@ const MovieSheet = () => {
           <h4>Cast</h4>
         </div>
         <div id="wrapper">
-          <button className="nav-button left" onClick={handleClickGoBack}></button>
+          <button className="nav-button left" onClick={scriptFunctions.handleClickGoBack}></button>
           <div id="carousel">
             {['actor1.webp', 'actor2.webp', 'actor3.webp', 'actor4.webp', 'actor5.webp', 'actor6.webp', 'actor7.webp', 'actor8.webp'].map((src, index) => (
               <div className="square" key={index}>
@@ -128,7 +78,7 @@ const MovieSheet = () => {
               </div>
             ))}
           </div>
-          <button className="nav-button right" onClick={handleClickGoAhead}></button>
+          <button className="nav-button right" onClick={scriptFunctions.handleClickGoAhead}></button>
         </div>
       </div>
       <div className="game-section">

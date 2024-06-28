@@ -2,71 +2,16 @@ import '../styles/actorsheet.css';
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import * as scriptFunctions from '../script';
 
 
 const ActorSheet = () => {
+
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '/script.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
+    scriptFunctions.initCarousel();
+    scriptFunctions.updateYear();
+    scriptFunctions.initReadMore();
   }, []);
-  
-  useEffect(() => {
-    const loadScripts = async () => {
-      const jqueryScript = document.createElement('script');
-      jqueryScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js';
-      jqueryScript.async = true;
-      document.body.appendChild(jqueryScript);
-
-      const owlCarouselScript = document.createElement('script');
-      owlCarouselScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js';
-      owlCarouselScript.async = true;
-      document.body.appendChild(owlCarouselScript);
-
-      jqueryScript.onload = () => {
-        window.$ = window.jQuery;
-        owlCarouselScript.onload = () => {
-          window.$('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            responsive: {
-              0: { items: 1 },
-              600: { items: 3 },
-              1000: { items: 5 }
-            }
-          });
-        };
-      };
-
-      return () => {
-        document.body.removeChild(jqueryScript);
-        document.body.removeChild(owlCarouselScript);
-      };
-    };
-
-    loadScripts();
-
-    // Add event listener for read more button
-    const readMoreButton = document.querySelector('.read-more-link');
-    if (readMoreButton) {
-      readMoreButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const additionalText = document.querySelector('.additional-text');
-        if (additionalText) {
-          additionalText.style.display = 'block';
-          readMoreButton.style.display = 'none';
-        }
-      });
-    }
-
-  }, []);
-
   return (
     <div>
       <Navigation />
