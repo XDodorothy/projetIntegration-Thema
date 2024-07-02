@@ -8,7 +8,7 @@ import * as scriptFunctions from '../script';
 
 const ActorSheet = () => {
   useEffect(() => {
-    //scriptFunctions.initCarousel();
+    scriptFunctions.initCarousel();
     scriptFunctions.updateYear();
     scriptFunctions.initReadMore();
   }, []);
