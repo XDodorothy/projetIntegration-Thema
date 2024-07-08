@@ -2,7 +2,7 @@ import '../styles/categories.css';
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
-import * as scriptFunctions from '../script';
+
 
 
 

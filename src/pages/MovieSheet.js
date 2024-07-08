@@ -9,7 +9,7 @@ import * as scriptFunctions from '../script';
 const MovieSheet = () => {
 
     useEffect(() => {
-      //scriptFunctions.initCarousel();
+      scriptFunctions.initCarousel();
       scriptFunctions.updateYear();
       scriptFunctions.initReadMore();
     }, []);

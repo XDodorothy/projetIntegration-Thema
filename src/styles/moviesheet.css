@@ -25,7 +25,6 @@ h1, h2, h3, h4 {
   color: gold;
 }
 
-/*Navbar*/
 @import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 body {
@@ -48,133 +47,6 @@ h1, h2, h3 {
 html {
   font-size: 100%;
 }
-.navbar {
-  background-color: #1C3144;
-}
-.navbar-container {
-  max-width: 1320px;
-}
-.navbar-brand {
-  font-size: 1.8em;
-}
-.navbar-dark .navbar-nav a.nav-link {
-  color: #D7BE82;
-  font-size: 18px;
-}
-.dropdown-menu {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border: none;
-  border-radius: 0;
-  padding: 0.7em;
-}
-.dropdown-menu ul {
-  list-style: none;
-  padding: 0;
-}
-.dropdown-menu li .dropdown-item {
-  color: gray;
-  font-size: 16px;
-  padding: 0.5em 1em;
-}
-.dropdown-menu li .dropdown-item:hover {
-  background-color: #596F62;
-  color:#fff;
-}
-.dropdown-menu li:first-child a {
-  font-weight: bold;
-  font-size: 16px;
-  color: #D7BE82;
-}
-.dropdown-menu li:first-child a:hover {
-  background-color: #596F62;
-  color:#fff;
-}
-.dropdown-menu.show {
-  display: flex;
-}
-@media only screen and (max-width: 992px) {
-  .dropdown-menu.show {
-    flex-wrap: wrap;
-    max-height: 350px;
-    overflow-y: scroll;
-  }
-}
-.custom-placeholder::placeholder {
-  color: #d4c087;
-}
-.custom-button {
-  border-color: #d4c087;
-}
-.custom-button:hover {
-  background-color: #d4c087; 
-  color: #fff; 
-}
-.navbar-offset {
-  padding-top: 68px;
-}
-
-[class^="btn-"] {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  max-width: 250px;
-  margin: 1rem auto;
-  text-align: center; 
-
-  border: 1px solid currentColor;
-}
-
-.container-fluid {
-  max-width:65%;
-}
-
-.background-color {
-  background-color: #1C3144;
-  padding:25px 0;
-}
-.footer-content h5 {
-  margin-bottom: 15px;
-}
-
-.footer-content ul li {
-  margin-bottom: 10px;
-}
-
-.footer-content ul li a {
-  text-decoration: none;
-}
-
-.footer-social .social-icons {
-  font-size: 120px;
-}
-
-.footer-logo img {
-  max-width: 220px;
-  height: auto;
-  margin: 0 auto;
-}
-
-.footer-contact {
-  margin-top: 25px;
-  color:#D7BE82;
-}
-.list-unstyled a {
-  text-decoration: none; 
-  color:#D7BE82;    
-}
-.list-unstyled li a {
-  display: block; 
-  padding: 10px 0; 
-  text-decoration: none;  
-}
-.footer {    
-  padding: 10px;
-  background-color: #D7BE82;
-  color: #1C3144;
-}
-footer h5 {
-  color:#D7BE82;
-}
 
 .carousel-title {
   display: flex;
@@ -196,6 +68,7 @@ footer h5 {
     color: #1C3144;
 }
 
+/*trailer button*/
 .centerer *,
 .centerer *:before,
 .centerer *:after {
