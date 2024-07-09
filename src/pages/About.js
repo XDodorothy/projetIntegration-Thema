@@ -14,7 +14,7 @@ const About = () => {
     };
 
   return (
-    <div>
+    <div className='about'>
       <Navigation />
       <div>
       <div className="container-fluid py-5 champ">

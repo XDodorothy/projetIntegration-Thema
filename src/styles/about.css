@@ -41,27 +41,27 @@ html {
 
 
 /* button*/
-.centerer *,
-.centerer *:before,
-.centerer *:after {
+.about .centerer *,
+.about .centerer *:before,
+.about .centerer *:after {
   box-sizing: border-box;
   transition: 0.5s ease-in-out;
 }
-.centerer *:before,
-.centerer *:after {
-  z-index: -1;
+.about .centerer *:before,
+.about .centerer *:after {
+z-index: -1;
 }
-.centerer h1,
-.centerer h4 {
+.about .centerer h1,
+.about .centerer h4 {
   margin: 0;
   line-height: 1;
 }
-.centerer a {
+.about .centerer a {
   text-decoration: none;
   line-height: 80px;
   color: #1C3144;
 }
-.centerer {
+.about .centerer {
   display: flex;
   width: 100%;
   max-width: 600px;
@@ -70,7 +70,7 @@ html {
   justify-content: center;
 }
 @media (min-width: 600px) {
-  .wrap {
+  .about .wrap {
     width: 50%;
     float: left;
   }
@@ -85,7 +85,7 @@ html {
   font-size: 18px;
   border: 1px solid currentColor;
 }
-.btn-5 {
+.about .btn-5 {
   color: tint(#1C3144);
   line-height: normal; 
   letter-spacing: 2px; 
@@ -93,8 +93,8 @@ html {
   font-weight: bold;
   letter-spacing: 1px;
 }
-.btn-5::before,
-.btn-5::after {
+.about .btn-5::before,
+.about .btn-5::after {
   content: '';
   position: absolute;
   width: 0;
@@ -102,21 +102,21 @@ html {
   border: 0 solid;
   transform: rotate(360deg);
 }
-.btn-5::before {
+.about .btn-5::before {
   bottom: 0;
   left: 0;
   border-color: transparent transparent transparent #1C3144;
 }
-.btn-5::after {
+.about .btn-5::after {
   top: 0;
   right: 0;
   border-color: transparent #1C3144 transparent transparent;
 }
-.btn-5:hover {
+.about .btn-5:hover {
   color: #D7BE82;
 }
-.btn-5:hover:before,
-.btn-5:hover:after {
+.about .btn-5:hover:before,
+.about .btn-5:hover:after {
   border-width: 80px 262.5px;
 }
 

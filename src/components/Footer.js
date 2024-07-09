@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Navbar.css' // Custom CSS for Footer
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -11,9 +12,15 @@ const Footer = () => {
               <div className="col-md-4 col-sm-12 text-center text-md-start">
                 <h5 className="text-md-start font-weight-bold">Quick links</h5>
                 <ul className="list-unstyled text-md-start">
-                  <li><a href="#home">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#actors">Actors</a></li>
+                  <li><NavLink activeClassName="nav-active" exact to='/'> 
+                   Home {/*Titre apparaissant sur le menu*/}
+                </NavLink></li>
+                  <li><NavLink activeClassName="nav-active" exact to='/about'> 
+                   About {/*Titre apparaissant sur le menu*/}
+                </NavLink></li>
+                  <li><NavLink activeClassName="nav-active" exact to='/actorlist'> 
+                   Actors {/*Titre apparaissant sur le menu*/}
+                </NavLink></li>
                   <li><a href="#movies">Movies</a></li>
                 </ul>
               </div>

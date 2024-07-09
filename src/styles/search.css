@@ -318,7 +318,7 @@ img {
 .centerer a {
   text-decoration: none;
   line-height: 80px;
-  color: black;
+  color: #1C3144;
 }
 .centerer {
   display: flex;
@@ -351,6 +351,7 @@ img {
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 1px;
+  z-index: 1;
 }
 .btn-5::before,
 .btn-5::after {
@@ -373,6 +374,7 @@ img {
 }
 .btn-5:hover {
   color: #D7BE82;
+
 }
 .btn-5:hover:before,
 .btn-5:hover:after {
