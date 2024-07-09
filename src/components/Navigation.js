@@ -2,6 +2,7 @@
 import '../styles/Navbar.css' // Custom CSS for Navbar
 import React, { useEffect } from 'react';
 import * as scriptFunctions from '../script';
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   useEffect(() => {
@@ -9,10 +10,14 @@ const Navbar = () => {
   }, []);
   
     return (
-      <div className="navbar-offset">
+      <div className="navbar mt-5">
         <nav className="navbar navbar-expand-md navbar-dark fixed-top">
           <div className="container-fluid navbar-container mx-auto">
-            <h4><a className="navbar-brand" href="#" style={{ color: '#D7BE82' }}>ThéMa</a></h4>
+            <h4>
+              <NavLink activeClassName="nav-active" className="navbar-brand" style={{ color: '#D7BE82' }} exact to='/'> 
+                   ThéMa {/*Titre apparaissant sur le menu*/}
+                </NavLink>
+                </h4>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -59,10 +64,15 @@ const Navbar = () => {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-uppercase" href="#">Actors</a>
+                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/actorlist'> 
+                   Actors {/*Titre apparaissant sur le menu*/}
+                </NavLink>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-uppercase" href="#">About</a>
+                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/about'>
+                   About {/*Titre apparaissant sur le menu*/}
+                </NavLink>
+                 
                 </li>
               </ul>
               <form className="d-flex" role="search">

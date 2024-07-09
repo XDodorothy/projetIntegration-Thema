@@ -23,7 +23,7 @@ const Home = () => {
     <div className="slider-row">
       <div className="parallax-slider slider-wrap">
         <div className="swiper-wrapper">
-          <div className="swiper-slide" style={{ backgroundImage: "url('movie5.jpg')" }}>
+        <div className="swiper-slide" style={{ backgroundImage: "url('movie5.jpg')" }}>
             <div className="swiper-slide--inner">
               <div className="slide--bg">
                 <div className="slide-bg--inner"></div>
@@ -59,7 +59,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="swiper-slide" style={{ backgroundImage: "url('movie8.jpg')" }}>
+          <div className="swiper-slide" style={{ backgroundImage: "url('movie1.jpg')" }}>
             <div className="swiper-slide--inner">
               <div className="slide--bg">
                 <div className="slide-bg--inner"></div>
@@ -95,7 +95,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="swiper-slide" style={{ backgroundImage: "url('movie9.jpg')" }}>
+          <div className="swiper-slide" style={{ backgroundImage: "url('movie5.jpg')" }}>
             <div className="swiper-slide--inner">
               <div className="slide--bg">
                 <div className="slide-bg--inner"></div>

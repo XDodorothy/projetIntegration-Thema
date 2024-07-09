@@ -4,9 +4,11 @@ import NotFound from "./pages/NotFound";
 import ActorSheet from './pages/ActorSheet';
 import MovieSheet from './pages/MovieSheet';
 import Categories from './pages/Categories';
+import ActorList from './pages/ActorList';
 import Search from './pages/Search';
 import Home from './pages/Home';
-
+import About from './pages/About';
+import Apropos from './pages/Apropos';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
       <Route path="/actorSheet" exact component={ActorSheet}/> 
       <Route path="/moviesheet" exact component={MovieSheet}/> 
       <Route path="/categories" exact component={Categories}/> 
+      <Route path="/actorlist" exact component={ActorList}/> 
+      <Route path="/about" exact component={About}/> 
+      <Route path="/apropos" exact component={Apropos}/> 
       <Route path="/search" exact component={Search}/> 
       <Route exact component={NotFound} /> {/* pas de PATH car cette page apparaît quand la page recherchée n'existe pas */}
     </Switch>
