@@ -1,4 +1,4 @@
-import '../styles/actorsheet.css'; 
+import '../styles/sheet.css'; 
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
@@ -14,7 +14,7 @@ const ActorSheet = () => {
   }, []);
 
   return (
-    <div>
+    <div className='sheet'>
       <Navigation />
       <div className="container-fluid py-5">
         <div className="row align-items-start">

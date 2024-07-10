@@ -19,6 +19,7 @@ const Apropos = () => {
       <Navigation />
       <div>
       <div className="container-fluid py-5 champ">
+        <h1>À PROPOS DE L'ÉQUIPE ThéMa</h1>
         <div className="row d-flex justify-content-center">
           <div className="col-12 col-md-4 mb-3 text-end">
             <img

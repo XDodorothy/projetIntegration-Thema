@@ -10,7 +10,7 @@ const Search = () => {
 
 
   return (
-    <React.Fragment>
+    <React.Fragment className="search">
       <Navigation />
       <div className="container-fluid card-bg-color" style={{ maxWidth: '100%' }}>
     <div className="row">

@@ -3,30 +3,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 body {
   font-family: 'Forum', serif;
-  body, html {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  }
+
 }
-h1, h2, h3, h4 {
+.sheet h1,.sheet h2, .sheet h3, .sheet h4 {
   font-family: 'Prata', serif;
 }
-.movie-poster {
+.sheet .movie-poster {
   max-width: 100%;
   height: auto;
 }
-.movie-details {
+.sheet .movie-details {
   margin-top: 20px;
 }
-.rating {
+.sheet .rating {
   font-size: 1.5em;
   color: gold;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
 body {
   font-family: 'Prata', serif;
   margin: 0;
@@ -40,15 +38,14 @@ body {
   -moz-hyphens: auto;
   hyphens: auto;
 }
-h1, h2, h3 {
-  font-family: 'Forum', serif;
+.sheet h1, .sheet h2, .sheet h3 {
   font-size:18px;
 }
 html {
   font-size: 100%;
 }
 
-.carousel-title {
+.sheet .carousel-title {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,37 +56,39 @@ html {
   border: 2px solid #D7BE82;
   margin : 50px auto 50px auto;
 }
-.carousel-title h4 {
+.sheet .carousel-title h4 {
   color: #D7BE82;   
 }
-.actor-details h1,
-.actor-details h3,
-.actor-details p {
+.sheet .actor-details h1,
+.sheet .actor-details h5,
+.sheet .actor-details h4,
+.sheet .actor-details h3,
+.sheet .actor-details p {
     color: #1C3144;
 }
 
 /*trailer button*/
-.centerer *,
-.centerer *:before,
-.centerer *:after {
+.sheet .centerer *,
+.sheet .centerer *:before,
+.sheet .centerer *:after {
   box-sizing: border-box;
   transition: 0.5s ease-in-out;
 }
-.centerer *:before,
-.centerer *:after {
+.sheet .centerer *:before,
+.sheet .centerer *:after {
   z-index: -1;
 }
-.centerer h1,
-.centerer h4 {
+.sheet .centerer h1,
+.sheet .centerer h4 {
   margin: 0;
   line-height: 1;
 }
-.centerer a {
+.sheet .centerer a {
   text-decoration: none;
   line-height: 80px;
   color: #1C3144;
 }
-.centerer {
+.sheet .centerer {
   display: flex;
   width: 100%;
   max-width: 600px;
@@ -98,7 +97,7 @@ html {
   justify-content: center;
 }
 @media (min-width: 600px) {
-  .wrap {
+  .sheet .wrap {
     width: 50%;
     float: left;
   }
@@ -113,7 +112,7 @@ html {
   font-size: 18px;
   border: 1px solid currentColor;
 }
-.btn-5 {
+.sheet .btn-5 {
   color: tint(#1C3144);
   line-height: normal; 
   letter-spacing: 2px; 
@@ -121,8 +120,8 @@ html {
   font-weight: bold;
   letter-spacing: 1px;
 }
-.btn-5::before,
-.btn-5::after {
+.sheet .btn-5::before,
+.sheet .btn-5::after {
   content: '';
   position: absolute;
   width: 0;
@@ -130,30 +129,30 @@ html {
   border: 0 solid;
   transform: rotate(360deg);
 }
-.btn-5::before {
+.sheet .btn-5::before {
   bottom: 0;
   left: 0;
   border-color: transparent transparent transparent #1C3144;
 }
-.btn-5::after {
+.sheet .btn-5::after {
   top: 0;
   right: 0;
   border-color: transparent #1C3144 transparent transparent;
 }
-.btn-5:hover {
+.sheet .btn-5:hover {
   color: #D7BE82;
 }
-.btn-5:hover:before,
-.btn-5:hover:after {
+.sheet .btn-5:hover:before,
+.sheet .btn-5:hover:after {
   border-width: 80px 262.5px;
 }
 /*------------caroussel actors--------*/
-* {
+ * {
     user-select: none;
     box-sizing: border-box;
 }
 
-.caroussel-actors {
+.sheet .caroussel-actors {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -164,7 +163,7 @@ html {
     background: #596F62;
 }
 
-#wrapper {
+.sheet #wrapper {
     display: flex;
     align-items: center;
     max-width: 1250px;
@@ -172,13 +171,13 @@ html {
     overflow: hidden;
 }
 
-#carousel {
+.sheet #carousel {
     display: flex;
     overflow: hidden;
     flex-grow: 1;
 }
 
-.square {
+.sheet .square {
     position: relative; 
     cursor: pointer;
     display: flex;
@@ -195,13 +194,13 @@ html {
     transition: 100ms ease-in-out;
 }
 
-.square:hover {
+.sheet .square:hover {
     background-color: #ffffff27;
     border-color: #f4f4f4;
     color: #d2d2d2;
 }
 
-.item-desc {
+.sheet .item-desc {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -213,34 +212,34 @@ html {
     text-align: center;
 }
 
-.item-desc h3, .item-desc p {
+.sheet .item-desc h3, .sheet .item-desc p {
     margin: 0;
 }
 
-.nav-button {
+.sheet .nav-button {
     cursor: pointer;
     width: 0;
     height: 0;
     border-style: solid;
 }
 
-.nav-button.left {
+.sheet .nav-button.left {
     border-width: 20px 30px 20px 0;
     border-color: #596F62 #D7BE82 #596F62;
     margin-right: 10px;
 }
 
-.nav-button.right {
+.sheet .nav-button.right {
     border-width: 20px 0 20px 30px;
     border-color: #596F62 #D7BE82 #596F62;
     margin-left: 10px; 
 }
 
-.nav-button:hover {
+.sheet .nav-button:hover {
     border-color: #596F62 #1C3144 #596F62;
 }
 
-.nav-button.left:hover {
+.sheet .nav-button.left:hover {
     border-color: #596F62 #1C3144 #596F62;
 }
 
@@ -253,32 +252,32 @@ html {
 .clear {
   clear: both;
 }
-img {
+.sheet img {
   max-width: 100%;
   border: 0px;
 }
-ul,
-ol {
+.sheet ul,
+.sheet ol {
   list-style: none;
 }
-a {
+.sheet a {
   text-decoration: none;
   color: inherit;
   outline: none;
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
 }
-a:focus,
-a:active,
-a:visited,
-a:hover {
+.sheet a:focus,
+.sheet a:active,
+.sheet a:visited,
+.sheet a:hover {
   text-decoration: none;
   outline: none;
 }
-a:hover {
-  color: #e73700;
+.sheet a:hover {
+  color: white;
 }
-h2 {
+.sheet h2 {
   margin-bottom: 48px;
   padding-bottom: 16px;
   font-size: 20px;
@@ -287,23 +286,23 @@ h2 {
   position: relative;
   text-transform: capitalize;
 }
-h3 {
+.sheet h3 {
   margin: 0 0 10px;
   font-size: 28px;
   line-height: 36px;
 }
-button {
+.sheet button {
   outline: none !important;
 }
 
 /* -------- title style ------- */
-.line-title {
+.sheet .line-title {
   position: relative;
   width: 400px;
   color : #D7BE82;
 }
-.line-title::before,
-.line-title::after {
+.sheet .line-title::before,
+.sheet .line-title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -311,25 +310,25 @@ button {
   height: 4px;
   border-radius: 2px;
 }
-.line-title::before {
+.sheet .line-title::before {
   width: 100%;
   background: #f2f2f2;
 }
-.line-title::after {
+.sheet .line-title::after {
   width: 32px;
   background: #e73700;
 }
 /* -------- Middle section style------- */
-.game-section {
+.sheet .game-section {
   padding: 60px 50px;
   background-color: #596F62;
 }
-.game-section .owl-stage {
+.sheet .game-section .owl-stage {
   margin: 15px 0;
   display: flex;
   display: -webkit-flex;
 }
-.game-section .item {
+.sheet .game-section .item {
   margin: 0 15px 60px;
   width: 320px;
   height: 400px;
@@ -345,12 +344,12 @@ button {
   -webkit-transition: all 0.4s ease-in-out;
   cursor: pointer;
 }
-.game-section .item.active {
+.sheet .game-section .item.active {
   width: 500px;
   box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
 }
-.game-section .item:after {
+.sheet .game-section .item:after {
   content: "";
   display: block;
   position: absolute;
@@ -360,7 +359,7 @@ button {
   top: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
-.game-section .item-desc {
+.sheet .game-section .item-desc {
   padding: 0 24px 12px;
   color: #fff;
   position: relative;
@@ -371,23 +370,23 @@ button {
   transition: all 0.4s ease-in-out;
   -webkit-transition: all 0.4s ease-in-out;
 }
-.game-section .item.active .item-desc {
+.sheet .game-section .item.active .item-desc {
   transform: none;
   -webkit-transform: none;
 }
-.game-section .item-desc p {
+.sheet .game-section .item-desc p {
   opacity: 0;
   -webkit-transform: translateY(32px);
   transform: translateY(32px);
   transition: all 0.4s ease-in-out 0.2s;
   -webkit-transition: all 0.4s ease-in-out 0.2s;
 }
-.game-section .item.active .item-desc p {
+.sheet .game-section .item.active .item-desc p {
   opacity: 1;
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
-.game-section .owl-theme.custom-carousel .owl-dots {
+.sheet .game-section .owl-theme.custom-carousel .owl-dots {
   margin-top: -20px;
   position: relative;
   z-index: 5;
@@ -395,92 +394,92 @@ button {
 /*------------- responsive css ------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  h2 {
+  .sheet h2 {
     margin-bottom: 32px;
   }
-  h3 {
+  .sheet h3 {
     margin: 0 0 8px;
     font-size: 24px;
     line-height: 32px;
   }
   /* -------- Landing page ------- */
-  .game-section {
+  .sheet .game-section {
     padding: 50px 30px;
   }
-  .game-section .item {
+  .sheet .game-section .item {
     margin: 0 12px 60px;
     width: 260px;
     height: 360px;
   }
-  .game-section .item.active {
+  .sheet .game-section .item.active {
     width: 400px;
   }
-  .game-section .item-desc {
+  .sheet .game-section .item-desc {
     transform: translateY(calc(100% - 46px));
     -webkit-transform: translateY(calc(100% - 46px));
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  h2 {
+  .sheet h2 {
     margin-bottom: 32px;
   }
-  h3 {
+  .sheet h3 {
     margin: 0 0 8px;
     font-size: 24px;
     line-height: 32px;
   }
-  .line-title {
+  .sheet .line-title {
     width: 330px;
   }
   /* -------- Landing page ------- */
-  .game-section {
+  .sheet .game-section {
     padding: 50px 30px 40px;
   }
-  .game-section .item {
+  .sheet .game-section .item {
     margin: 0 12px 60px;
     width: 240px;
     height: 330px;
   }
-  .game-section .item.active {
+  .sheet .game-section .item.active {
     width: 360px;
   }
-  .game-section .item-desc {
+  .sheet .game-section .item-desc {
     transform: translateY(calc(100% - 42px));
     -webkit-transform: translateY(calc(100% - 42px));
   }
 }
 
 @media (max-width: 767px) {
-  body {
+  .sheet body {
     font-size: 14px;
   }
-  h2 {
+  .sheet h2 {
     margin-bottom: 20px;
   }
-  h3 {
+  .sheet h3 {
     margin: 0 0 8px;
     font-size: 19px;
     line-height: 24px;
   }
-  .line-title {
+   .line-title {
     width: 250px;
   }
   /* -------- Landing page ------- */
-  .game-section {
+  .sheet .game-section {
     padding: 30px 15px 20px;
   }
-  .game-section .item {
+  .sheet .game-section .item {
     margin: 0 10px 40px;
     width: 200px;
     height: 280px;
   }
-  .game-section .item.active {
+  .sheet .game-section .item.active {
     width: 270px;
     box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
   }
-  .game-section .item-desc {
+  .sheet .game-section .item-desc {
     padding: 0 14px 5px;
     transform: translateY(calc(100% - 42px));
     -webkit-transform: translateY(calc(100% - 42px));

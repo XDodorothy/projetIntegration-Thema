@@ -1,4 +1,4 @@
-import '../styles/moviesheet.css'; 
+import '../styles/sheet.css'; 
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
@@ -15,14 +15,14 @@ const MovieSheet = () => {
     }, []);
 
   return (
-    <div>
+    <div className='sheet'>
       <Navigation />
-      <div>
+      <div >
       <div className="container-fluid py-5">
         <div className="row align-items-start">
           <div className="col-12 col-md-4 mb-3 mb-md-0 text-center">
             <img
-              src="4V06xpCUesnzXvkQav1q3RRlwxh.jpg"
+              src="movie1.jpg"
               className="img-fluid rounded actor-image"
               alt="Affiche du film"
             />

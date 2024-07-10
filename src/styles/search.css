@@ -13,11 +13,11 @@ body {
   -moz-hyphens: auto;
   hyphens: auto;
 }
-h1, h4, h5 {
+.search h1, .search h4, .search h5 {
   font-family: 'Prata', serif;
   
 }
-html {
+body {
   font-size: 100%;
 }
 
@@ -284,11 +284,13 @@ img {
 .selection label {
   display: block;
   margin-bottom: 5px;
+  color: #1C3144;
 }
 .form-input {
   width: 250px; /* Adjust the width as needed */
   padding: 10px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 .card-bg-color {
   background-color:  #596F62;
