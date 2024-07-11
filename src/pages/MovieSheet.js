@@ -3,11 +3,13 @@ import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import * as scriptFunctions from '../script';
+import { useLocation } from 'react-router-dom';
 
 
 
 const MovieSheet = () => {
-
+  const movie = location.state.movie;
+  const location = useLocation();
     useEffect(() => {
       scriptFunctions.initCarousel();
       scriptFunctions.updateYear();
@@ -21,11 +23,7 @@ const MovieSheet = () => {
       <div className="container-fluid py-5">
         <div className="row align-items-start">
           <div className="col-12 col-md-4 mb-3 mb-md-0 text-center">
-            <img
-              src="movie1.jpg"
-              className="img-fluid rounded actor-image"
-              alt="Affiche du film"
-            />
+          <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />
           </div>
           <div className="col-12 col-md-8 actor-details">
             <h4 className="font-weight-bold py-3">Civil War (Civil War)</h4>
