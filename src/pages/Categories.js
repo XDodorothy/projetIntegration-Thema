@@ -15,13 +15,19 @@ const Categories = (props) => {
   const [categories, setCategories] = useState([]); // const pour recupérer les donner en tableau []
   const [data, setData] = useState ([]);
    const { id } = useParams(); // Récupère l'id du genre à partir des paramètres de la route
-
+   const [nameGenre, setNameGenre] = useState(''); 
 
    useEffect(() => {
     axios.get("https://api.themoviedb.org/3/genre/movie/list?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US")
-      .then((res) => setCategories(res.data.genres));
-  }, []);
-
+    .then((res) => {
+      setCategories(res.data.genres);
+      // Trouver le nom du genre correspondant à l'id
+      const genre = res.data.genres.find(genre => genre.id.toString() === id);
+      if (genre) {
+        setNameGenre(genre.name);
+      }
+    });
+}, [id]);
   useEffect(() => {
     if (id) {
       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US&with_genres=${id}`)
@@ -45,8 +51,8 @@ const onClickMovie = (movie) => {
     <div className="row">
       <div className="col-md-12">
         <div className="site__wrapper">
-        <h3 className="mt-5 text-md-start mb-5">{categories.name}</h3>
-          <div className="grid" >
+        <h3 className="mt-5 text-md-start mb-5">{nameGenre}</h3>
+          <div className="grid">
           {data.map((movie) => (
   <div className="card" key={movie.id} onClick={() => onClickMovie(movie)}>
     <div className="card__image">
