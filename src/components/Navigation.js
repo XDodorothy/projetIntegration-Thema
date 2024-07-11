@@ -37,15 +37,265 @@ const Navbar = () => {
                   Movies
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {categories.map((genre) => (
-                    <NavLink 
-                      key={genre.id} 
-                      className='dropdown-item' 
-                      to={`/categories`} 
-                    >
-                      {genre.name}
-                    </NavLink>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Action & Adventure</a></li>
+                  <li><a class="dropdown-item" href="#">
+                    {categories.map((genre) => (
+                    genre.id === 28 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
                   ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 12 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 80 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 53 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 10752 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                    {categories.map((genre) => (
+                    genre.id === 37 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                </ul>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Science Fiction & Fantasy</a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 878 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 14 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 27 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                </ul>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Drama & Romance</a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 18 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 10749 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 36 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                </ul>
+                <ul>
+                  <li><a class="dropdown-item" href="#">Various</a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 35 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 16 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 99 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 10751 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 9648 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 10402 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                  <li><a class="dropdown-item" href="#">
+                  {categories.map((genre) => (
+                    genre.id === 10770 && (
+                      <NavLink 
+                        key={genre.id} 
+                        className='dropdown-item' 
+                        to={`/categories/${genre.id}`} 
+                      >
+                        {genre.name}
+                      </NavLink>
+                    )
+                  ))}
+                  </a></li>
+                </ul>
                 </div>
               </li>
               <li className="nav-item">
