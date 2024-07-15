@@ -17,9 +17,6 @@
   color: #6c757d;
 }
 
-.custom-button {
-  border: none;
-}
 
 .navbar-container {
   max-width: 1200px;
@@ -42,8 +39,8 @@ footer li a:hover {
 
 
 
-/*Dorothee*/
 
+/*Navbar*/
 body {
   font-family: 'Forum', serif;
 }
@@ -58,22 +55,9 @@ body, html {
 h1, h2, h3, h4 {
   font-family: 'Prata', serif;
 }
-.movie-poster {
-  max-width: 100%;
-  height: auto;
-}
-.movie-details {
-  margin-top: 20px;
-}
-.rating {
-  font-size: 1.5em;
-  color: gold;
-}
-
-/*Navbar*/
 
 body {
-  font-family: 'Prata', serif;
+ 
   margin: 0;
   padding: 0;
   font-size: 16px;

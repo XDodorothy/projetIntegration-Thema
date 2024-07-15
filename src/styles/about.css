@@ -124,9 +124,10 @@ z-index: -1;
   border-width: 80px 262.5px;
 }
 
-.about .biography {
+.biography {
   max-width: 70%;
   color: #1C3144;
+  background-color: red;
 
 }
 .about .champ {

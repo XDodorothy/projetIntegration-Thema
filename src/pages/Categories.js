@@ -12,6 +12,7 @@ const Categories = (props) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState([]);
+  const [runtimeMap, setRuntimeMap] = useState({});
   const { id } = useParams();
   const [nameGenre, setNameGenre] = useState('');
 
@@ -35,6 +36,7 @@ const Categories = (props) => {
           setLoading(false);
         })
         .catch(() => setLoading(false));
+      
     }
   }, [id, page]);
 
@@ -44,6 +46,29 @@ const Categories = (props) => {
       state: { movie }
     });
   };
+
+  function Rating({ movie }) {
+    const rating = movie.vote_average / 2;
+    if (rating < 1) {
+      return <p className="rating">☆</p>;
+    } else if (rating >= 1 && rating < 1.5) {
+      return <p className="rating">⭐☆</p>;
+    } else if (rating >= 1.5 && rating < 2) {
+      return <p className="rating">⭐⭐</p>;
+    } else if (rating >= 2 && rating < 2.5) {
+      return <p className="rating">⭐⭐⭐☆</p>;
+    } else if (rating >= 2.5 && rating < 3) {
+      return <p className="rating">⭐⭐⭐</p>;
+    } else if (rating >= 3 && rating < 3.5) {
+      return <p className="rating">⭐⭐⭐⭐☆</p>;
+    } else if (rating >= 3.5 && rating < 4) {
+      return <p className="rating">⭐⭐⭐⭐</p>;
+    } else if (rating >= 4 && rating < 4.5) {
+      return <p className="rating">⭐⭐⭐⭐⭐☆</p>;
+    } else {
+      return <p className="rating">⭐⭐⭐⭐⭐</p>;
+    }
+  }
 
   return (
     <div>
@@ -71,10 +96,10 @@ const Categories = (props) => {
                         <div className="card__overlay">
                           <div className="card__overlay-content">
                             <ul className="list-unstyled">
-                              <li><a href="#0" className="card__title list-unstyled">{movie.title}</a></li>
-                              <li><a href="#0" className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</a></li>
-                              <li><a href="#0" className="card__title list-unstyled">{movie.runtime ? `${movie.runtime} min` : 'N/A'}</a></li>
-                              <li><a className="rating">⭐⭐⭐⭐</a></li>
+                              <li className="card__title list-unstyled">{movie.title}</li>
+                              <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
+                              <li className="card__title list-unstyled">{movie.runtime ? `${movie.runtime} min` : 'N/A'}</li>
+                              <li><Rating movie={movie} /></li>
                             </ul>
                           </div>
                         </div>
