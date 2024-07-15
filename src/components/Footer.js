@@ -41,7 +41,7 @@ const Footer = () => {
               </div>
               <div className="col-md-4 col-sm-12 text-center ">
                 <div className="footer-logo text-md-end">
-                  <img src="logo.png" alt="Your Logo" />
+                  <img src="/logo.png" alt="Your Logo" />
                 </div>
               </div>
             </div>

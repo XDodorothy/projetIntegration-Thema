@@ -36,7 +36,7 @@ const ActorSheet = () => {
               popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
               recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
             </p>
-            <p className="py-3"><a href="#" className="read-more-link text-primary font-weight-bold">Read more ...</a></p>
+            <p className="py-3"><a href="#" className="read-more-link font-weight-bold">Read more ...</a></p>
             <p className="py-3 additional-text text-justify" style={{ display: 'none' }}>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer

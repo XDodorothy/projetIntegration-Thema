@@ -17,7 +17,7 @@ function App() {
 
       <Route path="/" exact component={Home}/> 
       <Route path="/actorSheet" exact component={ActorSheet}/> 
-      <Route path="/moviesheet" exact component={MovieSheet}/> 
+      <Route path="/movieSheet" exact component={MovieSheet}/> 
       <Route path="/categories/:id" exact component={Categories}/> 
       <Route path="/actorlist" exact component={ActorList}/> 
       <Route path="/about" exact component={About}/> 

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import * as scriptFunctions from '../script';
+import { useHistory} from "react-router-dom";
 
 
 
@@ -14,6 +15,14 @@ const Home = () => {
     scriptFunctions.initParallaxSlider();
     scriptFunctions.initCarousel();
 }, []);
+
+const history = useHistory();
+const onClickMovie = (movie) => {
+  history.push({
+    pathname: '/movieSheet',
+    state: { movie }
+  });
+};
 
   return (
     <div>

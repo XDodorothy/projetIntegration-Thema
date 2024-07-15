@@ -152,9 +152,7 @@ html {
     box-sizing: border-box;
 }
 
-.biography {
-  background-color: green;
-}
+
 .sheet .caroussel-actors {
     display: flex;
     flex-direction: column;
@@ -254,6 +252,9 @@ html {
 }
 .clear {
   clear: both;
+}
+.sheet {
+  background-color: #D7BE82;
 }
 .sheet img {
   max-width: 100%;

@@ -12,7 +12,6 @@ const Categories = (props) => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState([]);
-  const [runtimeMap, setRuntimeMap] = useState({});
   const { id } = useParams();
   const [nameGenre, setNameGenre] = useState('');
 
