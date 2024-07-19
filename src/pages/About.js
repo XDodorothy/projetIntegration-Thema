@@ -46,7 +46,7 @@ ThéMa is derived from parts of their names. The first part takes the final syll
       <div className="centerer">
               <div className="wrap" onClick={navigateToApropos}>
                 <a className="btn-5" href='#'>
-                  See french version
+                  See French Version
                 </a>
               </div>
               </div>

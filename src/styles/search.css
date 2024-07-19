@@ -317,10 +317,14 @@ img {
   margin: 0;
   line-height: 1;
 }
-.centerer a {
+.centerer button {
   text-decoration: none;
   line-height: 80px;
   color: #1C3144;
+}
+.wrap [class^="btn-"] {
+  min-width: 200px;
+
 }
 .centerer {
   display: flex;

@@ -79,7 +79,7 @@ z-index: -1;
     float: left;
   }
 }
-[class^="btn-"] {
+.about [class^="btn-"] {
   position: relative;
   display: block;
   overflow: hidden;
