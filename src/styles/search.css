@@ -324,7 +324,15 @@ img {
 }
 .wrap [class^="btn-"] {
   min-width: 200px;
+}
 
+.centerer .wrap2 button {
+  line-height: 50px;
+}
+.wrap2 [class^="btn-"] {
+  min-width: 100px;
+  padding: 0 0;
+  font-size: 14px;
 }
 .centerer {
   display: flex;

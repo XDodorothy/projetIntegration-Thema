@@ -71,7 +71,33 @@ const Search = (props) => {
     apply(event.target.value);
   };
 
-  
+  //Reset filter
+  const resetFilters = () => {
+    setQuery("");
+    setSortBy('popularity');
+    setStartDate('');
+    setEndDate('');
+    setGenre('');
+    setAge('');
+    setUserRating('');
+    setVoteCount('');
+    setRuntime('');
+  };
+  // Si il y a un filtre, 
+  const hasFilters = () => {
+    return (
+      sortBy !== 'popularity' ||
+      startDate !== '' ||
+      endDate !== '' ||
+      genre !== '' ||
+      age !== '' ||
+      userRating !== '' ||
+      voteCount !== '' ||
+      runtime !== ''
+    );
+  };
+
+  //Show movie sheet
   const onClickMovie = (movie) => {
     history.push({
       pathname: '/movieSheet',
@@ -190,6 +216,15 @@ const Search = (props) => {
                     </button>
                   </div>
                 </div>
+                {hasFilters() && (
+                <div className="centerer">
+                  <div className="wrap wrap2">
+                    <button className="btn-5"
+                     onClick={resetFilters}> Reset Filter
+                    </button>
+                  </div>
+                </div>
+                )}
               </div>
             </header>
           </div>
