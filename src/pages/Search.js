@@ -86,11 +86,11 @@ const Search = (props) => {
   // Si il y a un filtre, 
   const hasFilters = () => {
     return (
-      sortBy !== 'popularity' ||
+      sortBy !== 'popularity' || // Si le sortBy n'a pas comme selection 'popularity' alors cela veut dire qu'il y a un filtre
       startDate !== '' ||
       endDate !== '' ||
       genre !== '' ||
-      age !== '' ||
+      age !== '' || // Si le age n'est pas vide, alors cela veut dire qu'il y a un filtre
       userRating !== '' ||
       voteCount !== '' ||
       runtime !== ''
