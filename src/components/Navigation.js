@@ -299,8 +299,13 @@ const Navbar = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/actorlist'>
+                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/actorList'>
                   Actors {/*Titre apparaissant sur le menu*/}
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/search'>
+                  Search {/*Titre apparaissant sur le menu*/}
                 </NavLink>
               </li>
               <li className="nav-item">

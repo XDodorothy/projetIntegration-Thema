@@ -19,7 +19,7 @@ function App() {
       <Route path="/actorSheet" exact component={ActorSheet}/> 
       <Route path="/movieSheet" exact component={MovieSheet}/> 
       <Route path="/categories/:id" exact component={Categories}/> 
-      <Route path="/actorlist" exact component={ActorList}/> 
+      <Route path="/actorList" exact component={ActorList}/> 
       <Route path="/about" exact component={About}/> 
       <Route path="/apropos" exact component={Apropos}/> 
       <Route path="/search" exact component={Search}/> 
