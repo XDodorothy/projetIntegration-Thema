@@ -18,6 +18,7 @@ const ActorList = () => {
 
   useEffect(() => {
     setLoading(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     axios.get(`https://api.themoviedb.org/3/person/popular?api_key=166b9170e2b5bafde803f3f96ee6f452&language=en-US&page=${page}`)
       .then((res) => {
         setData(res.data.results);

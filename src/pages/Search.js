@@ -29,6 +29,7 @@ const Search = (props) => {
   useEffect(() => {
     if (keyParam) {
       setLoading(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US&query=${keyParam}&page=${page}`)
         .then((res) => {
           setData(res.data.results);

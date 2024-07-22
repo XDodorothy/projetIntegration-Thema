@@ -30,6 +30,7 @@ const Categories = (props) => {
   useEffect(() => {
     if (id) {
       setLoading(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US&with_genres=${id}&page=${page}`)
         .then((res) => {
           setData(res.data.results);
