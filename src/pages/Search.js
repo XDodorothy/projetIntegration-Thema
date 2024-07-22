@@ -26,6 +26,8 @@ const Search = (props) => {
 
   const keyParam = keyword || query;
 
+  //UseEffect
+
   useEffect(() => {
     if (keyParam) {
       setLoading(true);
