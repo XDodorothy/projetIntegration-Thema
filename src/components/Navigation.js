@@ -315,7 +315,7 @@ const Navbar = () => {
               </li>
             </ul>
             <form className="d-flex" role="search">
-              <input className="form-control me-2 custom-placeholder" type="search" placeholder="Research" aria-label="Search" />
+              <input className="form-control me-2 custom-placeholder" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-light custom-button" type="submit">
                 <i className="fa-solid fa-magnifying-glass" style={{ color: '#d4c087' }}></i>
               </button>
