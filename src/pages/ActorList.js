@@ -36,12 +36,12 @@ const ActorList = () => {
   return (
     <div>
       <Navigation />
+      <div className="container-fluid" id="card">
       {loading ? (
         <div className="load">
           <ThreeDots strokeOpacity={.125} speed={.75} />
         </div>
       ) : (
-        <div className="container-fluid" id="card">
           <div className="row">
             <div className="col-md-12">
               <div className="site__wrapper">
@@ -54,7 +54,8 @@ const ActorList = () => {
                           {actor.profile_path ? (
                             <img src={`http://image.tmdb.org/t/p/original${actor.profile_path}`} alt="image-actor" />
                           ) : (
-                            <div>No Image Available</div>
+                        
+                            <img src='/NoImageLogo.png' alt='image-film' />
                           )}
                           <div className="card__overlay">
                             <div className="card__overlay-content">
@@ -71,7 +72,6 @@ const ActorList = () => {
               </div>
             </div>
           </div>
-        </div>
       )}
       <div className="container-xxl">
         <div className="d-flex justify-content-evenly">
@@ -108,6 +108,7 @@ const ActorList = () => {
             </ul>
           </nav>
         </div>
+      </div>
       </div>
       <Footer />
     </div>
