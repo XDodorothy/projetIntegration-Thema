@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
     return (
       <>
-        <hr />
+   
         <footer className="background-color">
           <div className="container-fluid">
             <div className="row m-0">

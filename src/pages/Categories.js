@@ -70,7 +70,8 @@ const Categories = (props) => {
                         {movie.poster_path ? (
                           <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />
                         ) : (
-                          <div>No Image Available</div>
+                          
+                            <img src='/NoImageLogo.png' alt='image-film' />
                         )}
                         <div className="card__overlay">
                           <div className="card__overlay-content">
@@ -90,6 +91,7 @@ const Categories = (props) => {
             </div>
           </div>
         </div>
+
         )}
         <div className="container-xxl">
           <div className="d-flex justify-content-evenly">

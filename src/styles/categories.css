@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 @import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 body {
@@ -74,7 +75,20 @@ html {
 /* Pagination */
 .pagination .page-link.custom-link {
   cursor: pointer;
+  color: #D7BE82;
+  background-color: #596f62;
+  box-shadow: #596f62;
+
 }
+.pagination .page-link.custom-link:hover {
+  cursor: pointer;
+  color: #596f62;
+  background-color: #D7BE82;
+  box-shadow: #596f62;
+
+
+}
+
 
 @media screen and (min-width: 992px) {
   .site__wrapper .grid {
@@ -168,3 +182,4 @@ html {
   max-width: 100%;
   background-color: #596f62;
 }
+
