@@ -208,7 +208,7 @@ html {
 }
 
 .footer-logo img {
-  max-width: 150px;
+  width: 150px;
   height: auto;
   margin: 0 auto;
 }
@@ -225,7 +225,7 @@ html {
 
 .list-unstyled li a {
   display: block;
-  padding: 10px 0;
+  padding: 5px 0;
   text-decoration: none;
 }
 
