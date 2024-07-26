@@ -183,13 +183,3 @@ html {
   background-color: #596f62;
 }
 
-.noImage {
-  font-family: 'Prata', serif;
-  text-align: center;
-  color: #1C3144;
-
-}
-
-.noImage img {
-  width: fit-content;
-}

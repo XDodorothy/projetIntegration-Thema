@@ -250,7 +250,7 @@ const Search = (props) => {
                             {movie.poster_path ? (
                               <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />
                             ) : (
-                              <div>No Image Available</div>
+                              <img src='/NoImageLogo.png' alt='image-film' />
                             )}
                             <div className="card__overlay card__overlay--blue">
                               <div className="card__overlay-content">
