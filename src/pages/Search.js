@@ -1,8 +1,9 @@
 import '../styles/search.css'; 
+import '../styles/styles.css'; 
 import React, { useEffect, useState } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from 'react-loading-icons';
 import { Rating } from '../script';  // Importer Rating Star 
@@ -20,7 +21,8 @@ const Search = (props) => {
   const [runtime, setRuntime] = useState(''); //filtre
   const [data, setData] = useState([]);
   const history = useHistory();
-  const [page, setPage] = useState(1);
+  const { page:pageParam } = useParams();
+  const [page, setPage] = useState(pageParam ? parseInt(pageParam) : 1);
   const [loading, setLoading] = useState(false);
 
 
@@ -40,6 +42,14 @@ const Search = (props) => {
         .catch(() => setLoading(false));
     }
   }, [keyParam, page]);
+
+
+  
+  //Next page history
+  const updatePage = (newPage) => {
+    setPage(newPage);
+    history.push(`/search/${newPage}`);
+  };
 
   const applyFilter = () => {
     setLoading(true);
@@ -276,18 +286,23 @@ const Search = (props) => {
         </div>
         <div className="container-xxl">
           <div className="d-flex justify-content-evenly">
-            <nav aria-label="Page navigation example">
+          <nav aria-label="Page navigation example">
               <ul className="pagination">
                 <li className="page-item">
-                  <button className="page-link custom-link me-3" onClick={() => setPage(1)}>
+                  <button className="page-link custom-link me-3" onClick={() => updatePage(1)}>
                     First Page
                   </button>
                 </li>
                 <li className="page-item">
                   <button className="page-link custom-link me-3"
                     onClick={() => {
-                      page === 1 ? window.alert("No previous page") : setPage(page - 1);
+                      if (page === 1) {
+                        window.alert("No previous page");
+                      } else {
+                        updatePage(page - 1);
+                      }
                     }}>
+                    {page === 1 ? <><i className="fa-solid fa-xmark"></i> </>: <>{page - 1} <i className="fa-solid fa-arrow-left"></i> </>}
                     Back Page
                   </button>
                 </li>
@@ -298,13 +313,18 @@ const Search = (props) => {
                 <li className="page-item">
                   <button className="page-link custom-link me-3"
                     onClick={() => {
-                      page === 500 ? window.alert("No next page") : setPage(page + 1);
+                      if (page === 500) {
+                        window.alert("No next page");
+                      } else {
+                        updatePage(page + 1);
+                      }
                     }}>
                     Next Page
+                    {page === 500 ? <> <i className="fa-solid fa-xmark"></i></> : <> <i className="fa-solid fa-arrow-right"></i>  {page + 1}</>}
                   </button>
                 </li>
                 <li className="page-item">
-                  <button className="page-link custom-link me-3" onClick={() => setPage(500)}>Last Page</button>
+                  <button className="page-link custom-link me-3" onClick={() => updatePage(500)}>Last Page</button>
                 </li>
               </ul>
             </nav>

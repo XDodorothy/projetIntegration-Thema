@@ -18,11 +18,11 @@ function App() {
       <Route path="/" exact component={Home}/> 
       <Route path="/actorSheet" exact component={ActorSheet}/> 
       <Route path="/movieSheet" exact component={MovieSheet}/> 
-      <Route path="/categories/:id" exact component={Categories}/> 
-      <Route path="/actorList" exact component={ActorList}/> 
+      <Route path="/categories/:id/:page?" exact component={Categories}/> 
+      <Route path="/actorList/:page?" exact component={ActorList}/> 
       <Route path="/about" exact component={About}/> 
       <Route path="/apropos" exact component={Apropos}/> 
-      <Route path="/search" exact component={Search}/> 
+      <Route path="/search/:page?" exact component={Search}/> 
       <Route exact component={NotFound} /> {/* pas de PATH car cette page apparaît quand la page recherchée n'existe pas */}
     </Switch>
   </BrowserRouter>

@@ -1,4 +1,5 @@
 import '../styles/sheet.css'; 
+import '../styles/styles.css'; 
 import React, { useEffect } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";

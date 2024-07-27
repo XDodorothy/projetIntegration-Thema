@@ -1,4 +1,5 @@
 import '../styles/about.css'; 
+import '../styles/styles.css'; 
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { useHistory } from 'react-router-dom';

@@ -64,30 +64,6 @@ html {
   height: auto;
 }
 
-/* Loading spinner */
-.load {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-/* Pagination */
-.pagination .page-link.custom-link {
-  cursor: pointer;
-  color: #D7BE82;
-  background-color: #596f62;
-  box-shadow: #596f62;
-
-}
-.pagination .page-link.custom-link:hover {
-  cursor: pointer;
-  color: #596f62;
-  background-color: #D7BE82;
-  box-shadow: #596f62;
-
-
-}
 
 
 @media screen and (min-width: 992px) {
