@@ -20,7 +20,7 @@ const Navigation = (props) => {
   const onSearch = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
     if (keyword.trim()) /*enlever les espaces au début et à la fin et éviter des erreurs*/ {
-      history.push(`/search/?page=1&keyword=${encodeURIComponent(keyword)}`);
+      history.push(`/search&keyword=${encodeURIComponent(keyword)}`);
     }
   }
   return (
@@ -51,7 +51,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -62,7 +62,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -73,7 +73,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -84,7 +84,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -95,7 +95,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -106,7 +106,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -120,7 +120,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -131,7 +131,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -142,7 +142,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -156,7 +156,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -167,7 +167,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -178,7 +178,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -192,7 +192,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -203,7 +203,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -214,7 +214,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -225,7 +225,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -258,7 +258,7 @@ const Navigation = (props) => {
                       <NavLink 
                         key={genre.id} 
                         className='dropdown-item' 
-                        to={`/categories/${genre.id}/?page=1`} 
+                        to={`/categories/${genre.id}`} 
                       >
                         {genre.name}
                       </NavLink>
@@ -268,7 +268,7 @@ const Navigation = (props) => {
                 </div>
               </li>
               <li className="nav-item">
-                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/actorList/?page=1'>
+                <NavLink activeClassName="nav-active" className="nav-link text-uppercase" exact to='/actorList'>
                   Actors {/*Titre apparaissant sur le menu*/}
                 </NavLink>
               </li>
