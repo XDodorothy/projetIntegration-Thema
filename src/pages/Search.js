@@ -3,13 +3,12 @@ import '../styles/styles.css';
 import React, { useEffect, useState } from 'react';
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
-import { useHistory, useParams, useLocation } from "react-router-dom";
+import { BrowserRouter as Router , useHistory, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from 'react-loading-icons';
 import { Rating } from '../script';  // Importer Rating Star 
 
-const Search = (props) => {
-  const { keyword } = props; 
+const Search = () => {
   const [query, setQuery] = useState("");
   const [sortBy, setSortBy] = useState('popularity');//filtre
   const [startDate, setStartDate] = useState('');//filtre
@@ -24,10 +23,18 @@ const Search = (props) => {
   const { page:pageParam } = useParams();
   const [page, setPage] = useState(pageParam ? parseInt(pageParam) : 1);
   const [loading, setLoading] = useState(false);
+  const queryParam = useQuery();
+  const keyword = queryParam.get('keyword');
 
-
+  //UseEffect
   const keyParam = keyword || query;
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+   
+ 
 
+  // lit URL pour récupérer ce qui est écrit dans keyword = URL
   //UseEffect
 
   useEffect(() => {
@@ -44,14 +51,22 @@ const Search = (props) => {
   }, [keyParam, page]);
 
 
-  
-  //Next page history
-  const updatePage = (newPage) => {
-    setPage(newPage);
-    history.push(`/search/${newPage}`);
-  };
+ // Fonction pour mettre à jour la valeur du champ de recherche et l'URL
+ const handleSearchChange = (event) => {
+  const newQuery = event.target.value;
+  setQuery(newQuery);
+  setPage(1); // Réinitialiser la page à 1 lors de la recherche
+  history.push(`/search/?page=1&keyword=${newQuery}`);
+};
+
+// Fonction pour mettre à jour la page
+const updatePage = (newPage) => {
+  setPage(newPage);
+  history.push(`/search/?page=${newPage}&keyword=${query}`);
+};
 
   const applyFilter = () => {
+    setPage(1); // Réinitialiser la page à 1
     setLoading(true);
     const filters = {
       sort_by: sortBy,
@@ -70,7 +85,7 @@ const Search = (props) => {
         api_key: 'a67b57849deb687f2cd49d7a8298b366',
         language: 'en-US',
         ...filters,
-        page
+        page:1
       }
     })
     .then((res) => {
@@ -82,6 +97,7 @@ const Search = (props) => {
 
   const handleFilter = (apply) => (event) => {
     apply(event.target.value);
+    setPage(1); // réinitialiser à la page 1 à chaque modification de filtre
   };
 
   //Reset filter
@@ -118,7 +134,6 @@ const Search = (props) => {
     });
   };
 
-
   return (
     <React.Fragment>
       <Navigation />
@@ -128,7 +143,12 @@ const Search = (props) => {
             <h5 className="font-weight-bold my-5">Search in the Movie Catalog</h5>
             <div className="search-container">
               <div className="search-bar">
-                <input type="text" id="search-input" placeholder="Search by Movie Title..." onChange={handleFilter(setQuery)} />
+                <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search by Movie Title..." 
+                value={keyword} 
+                onChange={handleSearchChange} />
                 
               </div>
             </div>

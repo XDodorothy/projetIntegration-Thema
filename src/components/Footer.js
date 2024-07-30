@@ -18,7 +18,7 @@ const Footer = () => {
                   <li><NavLink activeClassName="nav-active" exact to='/about'> 
                    About {/*Titre apparaissant sur le menu*/}
                 </NavLink></li>
-                  <li><NavLink activeClassName="nav-active" exact to='/actorList'> 
+                  <li><NavLink activeClassName="nav-active" exact to='/actorList/page=1'> 
                    Actors {/*Titre apparaissant sur le menu*/}
                 </NavLink></li>
                 <li><NavLink activeClassName="nav-active" exact to='/search'> 
