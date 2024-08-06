@@ -177,20 +177,20 @@ export function Rating({ movie }) {
   if (rating < 1) {
     return <p className="rating">☆</p>;
   } else if (rating >= 1 && rating < 1.5) {
-    return <p className="rating">⭐☆</p>;
+    return <p className="rating">☆☆</p>;
   } else if (rating >= 1.5 && rating < 2) {
-    return <p className="rating">⭐⭐</p>;
+    return <p className="rating">☆☆</p>;
   } else if (rating >= 2 && rating < 2.5) {
-    return <p className="rating">⭐⭐⭐☆</p>;
+    return <p className="rating">☆☆☆☆</p>;
   } else if (rating >= 2.5 && rating < 3) {
-    return <p className="rating">⭐⭐⭐</p>;
+    return <p className="rating">☆☆☆</p>;
   } else if (rating >= 3 && rating < 3.5) {
-    return <p className="rating">⭐⭐⭐⭐☆</p>;
+    return <p className="rating">☆☆☆☆☆</p>;
   } else if (rating >= 3.5 && rating < 4) {
-    return <p className="rating">⭐⭐⭐⭐</p>;
+    return <p className="rating">☆☆☆☆</p>;
   } else if (rating >= 4 && rating < 4.5) {
-    return <p className="rating">⭐⭐⭐⭐⭐☆</p>;
+    return <p className="rating">☆☆☆☆☆☆</p>;
   } else {
-    return <p className="rating">⭐⭐⭐⭐⭐</p>;
+    return <p className="rating">☆☆☆☆☆</p>;
   }
 }

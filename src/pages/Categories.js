@@ -100,7 +100,6 @@ const Categories = (props) => {
                               <ul className="list-unstyled">
                                 <li className="card__title list-unstyled">{movie.title}</li>
                                 <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
-                                <li className="card__title list-unstyled">{movie.runtime ? `${movie.runtime} min` : 'N/A'}</li>
                                 <li><Rating movie={movie} /></li>
                               </ul>
                             </div>

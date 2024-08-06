@@ -64,28 +64,24 @@ h3,
 h4 {
   font-family: 'Prata', serif;
 }
-
-body {
-
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-family: "Forum";
-  font-weight: 400;
-  line-height: 1.5;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
+.fa-magnifying-glass:hover {
+color: #1C3144 !important;
 }
 
-r h1,
+
+hr h1,
 h2,
 h3 {
   font-family: 'Forum', serif;
   font-size: 18px;
 }
 
+
+.form-control:focus {
+
+    outline: none !important;
+    box-shadow: none !important;
+}
 html {
   font-size: 100%;
 }
