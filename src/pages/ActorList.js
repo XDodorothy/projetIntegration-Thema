@@ -48,7 +48,7 @@ const ActorList = () => {
           <ThreeDots strokeOpacity={.125} speed={.75} />
         </div>
       ) : (
-          <div className="row">
+          <div className="row actorlist">
             <div className="col-md-12">
               <div className="site__wrapper">
                 <h3 className="mt-5 text-md-start mb-5">Popular Actors</h3>

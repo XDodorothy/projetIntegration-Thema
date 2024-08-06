@@ -37,7 +37,7 @@ const Categories = (props) => {
 
       // Réinitialiser la page à 1 lors du changement de genre
       setPage(1);
-      history.push(`/categories/${id}?page=1`);
+      history.push(`/categories/${id}`);
 
       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US&with_genres=${id}&page=1`)
         .then((res) => {
@@ -100,7 +100,7 @@ const Categories = (props) => {
                               <ul className="list-unstyled">
                                 <li className="card__title list-unstyled">{movie.title}</li>
                                 <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
-                                <li><Rating movie={movie} /></li>
+                                <li className='rating'><Rating movie={movie} /></li>
                               </ul>
                             </div>
                           </div>

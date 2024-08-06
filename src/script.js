@@ -175,22 +175,22 @@ const willLeftLessThan40pxToScrollStart = (nextStep) => {
 export function Rating({ movie }) {
   const rating = movie.vote_average / 2;
   if (rating < 1) {
-    return <p className="rating">☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i></p>;
   } else if (rating >= 1 && rating < 1.5) {
-    return <p className="rating">☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"><i class="fa-regular fa-star-half"></i></i></p>;
   } else if (rating >= 1.5 && rating < 2) {
-    return <p className="rating">☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star-half"></i></p>;
   } else if (rating >= 2 && rating < 2.5) {
-    return <p className="rating">☆☆☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"><i class="fa-regular fa-star-half"></i></i></p>;
   } else if (rating >= 2.5 && rating < 3) {
-    return <p className="rating">☆☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>;
   } else if (rating >= 3 && rating < 3.5) {
-    return <p className="rating">☆☆☆☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"><i class="fa-regular fa-star-half"></i></i></p>;
   } else if (rating >= 3.5 && rating < 4) {
-    return <p className="rating">☆☆☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>;
   } else if (rating >= 4 && rating < 4.5) {
-    return <p className="rating">☆☆☆☆☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star-half"><i class="fa-regular fa-star-half"></i></i></p>;
   } else {
-    return <p className="rating">☆☆☆☆☆</p>;
+    return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>;
   }
 }

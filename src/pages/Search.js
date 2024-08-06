@@ -260,7 +260,7 @@ const updatePage = (newPage) => {
                                   <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
                                 </ul>
                                 <li className="card__title list-unstyled">{movie.title}</li>
-                                <ul className="card__meta card__meta--last card__title">
+                                <ul className="card__meta card__meta--last card__title" style={{ opacity: '1' }}>
                                   <li className="rating"><Rating movie={movie} /></li>
                                 </ul>
                               </div>
