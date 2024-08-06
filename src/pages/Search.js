@@ -254,17 +254,15 @@ const updatePage = (newPage) => {
                             ) : (
                               <img src='/NoImageLogo.png' alt='image-film' />
                             )}
-                            <div className="card__overlay card__overlay--blue">
-                              <div className="card__overlay-content">
-                                <ul className="card__meta card__title">
-                                  <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
-                                </ul>
+                                                      <div className="card__overlay">
+                            <div className="card__overlay-content">
+                              <ul className="list-unstyled">
                                 <li className="card__title list-unstyled">{movie.title}</li>
-                                <ul className="card__meta card__meta--last card__title" style={{ opacity: '1' }}>
-                                  <li className="rating"><Rating movie={movie} /></li>
-                                </ul>
-                              </div>
+                                <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
+                                <li className='rating'><Rating movie={movie} /></li>
+                              </ul>
                             </div>
+                          </div>
                           </div>
                         </div>
                       </div>

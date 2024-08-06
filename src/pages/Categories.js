@@ -88,7 +88,7 @@ const Categories = (props) => {
                 <div className="grid-container">
                   {data.map((movie) => (
                     <div className="grid-item" key={movie.id} onClick={() => onClickMovie(movie)}>
-                      <div className="card">
+                      <div className="card mpovieInfo">
                         <div className="card__image">
                           {movie.poster_path ? (
                             <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />

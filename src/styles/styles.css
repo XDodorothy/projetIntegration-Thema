@@ -221,7 +221,7 @@ img {
 }
 .card__overlay ul li:not(.rating) {
   /* Styles que vous voulez appliquer à tous les li sauf ceux avec la classe rating */
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 .site__wrapper .card__overlay {
@@ -230,7 +230,7 @@ img {
 }
 
 .card__overlay:hover ul li {
-  opacity: 1;
+  opacity: 1 !important;
 
 }
 
