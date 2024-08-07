@@ -190,21 +190,20 @@ img {
   transform: scale(1.2);
 }
 .card__title {
-  color: #D7BE82;
-  display: flex;
-  font-family: "Prata";
+  color:#D7BE82;
+  display: inline-block;
   font-size: 1.5em;
-  font-weight: normal;
+  font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.75em;
   text-decoration: none;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
-  padding-left: 10px;
 }
+
 .card__title:hover {
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
 }
 .card__overlay {
@@ -218,10 +217,11 @@ img {
   top: 0;
   width: auto;
   z-index: 1;
+ 
 }
-.card__overlay ul li:not(.rating) {
-  /* Styles que vous voulez appliquer à tous les li sauf ceux avec la classe rating */
-  opacity: 0 !important;
+.card__overlay-content {
+  opacity: 0;
+  
 }
 
 .site__wrapper .card__overlay {
@@ -229,9 +229,8 @@ img {
   z-index: 2;
 }
 
-.card__overlay:hover ul li {
+.card__overlay-content:hover{
   opacity: 1 !important;
-
 }
 
 

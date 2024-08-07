@@ -85,77 +85,11 @@ html {
     width: 100%; 
   }
 }
-.site__wrapper .card__image {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  display: block;
-  min-height: 240px;
-  overflow: hidden;
-  position: relative;
-}
-.site__wrapper .card__image > img {
-  display: block;
-  margin-bottom: 0;
-  width: 100%;
-  -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.site__wrapper .card__image:hover > img {
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-  transform: scale(1.2);
- 
-}
 
-.card__image:hover {
-  cursor: pointer;
-}
-.site__wrapper .card__title {
-  color:#D7BE82;
-  display: inline-block;
-  font-size: 1.5em;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 0.75em;
-  text-decoration: none;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-.site__wrapper .card__title:hover {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-}
-.site__wrapper .card__overlay {
-  content: "";
-  bottom: 0;
-  display: block;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-.site__wrapper .card__overlay {
-  background-image: linear-gradient(to bottom, rgba(89, 111, 98, 0.1), rgba(89, 111, 98, 0.8));
-  z-index: 2;
-}
+
 .site__wrapper .card__overlay-content {
   position: absolute;
   bottom: 0;
   padding: 1.5em;
   z-index: 3;
 }
-#card {
-  max-width: 100%;
-  background-color: #596f62;
-}
-

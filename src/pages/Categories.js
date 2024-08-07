@@ -98,7 +98,7 @@ const Categories = (props) => {
                           <div className="card__overlay">
                             <div className="card__overlay-content">
                               <ul className="list-unstyled">
-                                <li className="card__title list-unstyled">{movie.title}</li>
+                                <li className="card__title list-unstyled">{movie.title}</li><br/>
                                 <li className="card__title list-unstyled">{movie.release_date ? movie.release_date.substring(0, 4) : 'N/A'}</li>
                                 <li className='rating'><Rating movie={movie} /></li>
                               </ul>
