@@ -1,18 +1,37 @@
 import '../styles/sheet.css'; 
 import '../styles/styles.css'; 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import * as scriptFunctions from '../script';
-//import CarouselMovie from '../components/CarouselMovie';
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
+import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+import 'owl.carousel';
 
+const ActorSheet = (props) => {
+  const id = props.location.state.id;
+  const URL = `https://api.themoviedb.org/3/person/${id}?api_key=96c53f5c4eea872e1526092d2ea94b36&language=en-US`;
 
-const ActorSheet = () => {
+  const [detail, setDetail] = useState({});
+  const [knownForMovies, setKnownForMovies] = useState([]);
+  const [otherMovies, setOtherMovies] = useState([]);
+
   useEffect(() => {
+    axios.get(URL)
+      .then((res) => {
+        setDetail(res.data);
+        setKnownForMovies(res.data.known_for);
+        setOtherMovies(res.data.credits ? res.data.credits.cast : []);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des données :", error);
+      });
+
     scriptFunctions.initCarousel();
     scriptFunctions.updateYear();
     scriptFunctions.initReadMore();
-  }, []);
+  }, [URL]);
 
   return (
     <div className='sheet'>
@@ -20,33 +39,23 @@ const ActorSheet = () => {
       <div className="container-fluid py-5">
         <div className="row align-items-start">
           <div className="col-12 col-md-4 mb-3 mb-md-0 text-center">
-            <img src="actor.webp" className="img-fluid rounded actor-image" alt="Affiche du film" />
+          {detail.profile_path ? (
+                            <img src={`http://image.tmdb.org/t/p/original${detail.profile_path}`} alt="image-actor" />
+                          ) : (
+                            <img src='/NoImageLogo.png' alt='image-film' />
+                          )}
           </div>
           <div className="col-12 col-md-8 actor-details">
-            <h4 className="font-weight-bold py-3">Actor's Name</h4>
-            <h5 className="font-weight-bold">Personal Info :</h5>
-            <p className="py-3"><strong>Known for :</strong> Acting</p>
-            <p className="py-3"><strong>Known Credit :</strong> 115</p>
-            <p className="py-3"><strong>Gender :</strong> Female</p>
-            <p className="py-3"><strong>Birthday :</strong> April 30, 1982</p>
-            <p className="py-3 biography text-justify">
-              <strong>Biography :</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-              took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-              recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-            <p className="py-3"><a href="#" className="read-more-link font-weight-bold">Read more ...</a></p>
-            <p className="py-3 additional-text text-justify" style={{ display: 'none' }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-              took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-              centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and plus
-              récemment avec des logiciels de publication assistée par ordinateur comme Aldus PageMaker y compris
-              des versions de Lorem Ipsum.
-            </p>
+          <h4 className="font-weight-bold py-3">{detail.name}</h4>
+              <h5 className="font-weight-bold">Personal Info :</h5>
+              <p className="py-3"><strong>Known for :</strong> {detail.known_for_department}</p>
+              <p className="py-3"><strong>Birthday :</strong> {detail.birthday}</p>
+              <p className="py-3"><strong>Place of birth :</strong> {detail.place_of_birth}</p>
+              <p className="py-3 biography text-justify">{detail.biography}</p>
+              <p className="py-3"><a href="#" className="read-more-link font-weight-bold">Read more ...</a></p>
+              <p className="py-3 additional-text text-justify" style={{ display: 'none' }}>
+                {detail.biography}
+              </p>
           </div>
         </div>
       </div>

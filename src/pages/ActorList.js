@@ -27,12 +27,7 @@ const ActorList = () => {
       .catch(() => setLoading(false));
   }, [page]);
 
-  const onClickActor = (actor) => {
-    history.push({
-      pathname: '/actorSheet',
-      state: { actor }
-    });
-  };
+
 
   const updatePage = (newPage) => {
     setPage(newPage);
@@ -54,7 +49,7 @@ const ActorList = () => {
                 <h3 className="mt-5 text-md-start mb-5">Popular Actors</h3>
                 <div className="grid-container">
                   {data.map((actor) => (
-                    <div className="grid-item" key={actor.id} onClick={() => onClickActor(actor)}>
+                    <div className="grid-item" key={actor.id} onClick={() => history.push("/actorSheet", {id: actor.id})}>
                       <div className="card">
                         <div className="card__image">
                           {actor.profile_path ? (

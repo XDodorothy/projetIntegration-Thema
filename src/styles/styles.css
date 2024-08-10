@@ -217,10 +217,15 @@ img {
   top: 0;
   width: auto;
   z-index: 1;
+  cursor: pointer;
  
 }
-.card__overlay-content {
-  opacity: 0;
+.actorlist .card__overlay-content {
+  opacity: 1;
+  
+}
+.movieInfo .card__overlay-content {
+  opacity: 0 !important;
   
 }
 

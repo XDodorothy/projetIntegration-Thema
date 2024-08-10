@@ -246,8 +246,8 @@ const updatePage = (newPage) => {
                 <div className="row">
                   {data.map((movie) => (
                     <div className="col-xl-3 col-lg-6 col-md-12" key={movie.id}>
-                      <div className="grid" style={{ width: '100%' }} onClick={() => onClickMovie(movie)}>
-                        <div className="card">
+                      <div className="grid" style={{ width: '100%' }} onClick={() => history.push("/movieSheet", {id: movie.id})}>
+                        <div className="card movieInfo">
                           <div className="card__image">
                             {movie.poster_path ? (
                               <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />

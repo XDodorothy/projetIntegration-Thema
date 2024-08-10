@@ -87,8 +87,8 @@ const Categories = (props) => {
                 <h3 className="mt-5 text-md-start mb-5">{nameGenre}</h3>
                 <div className="grid-container">
                   {data.map((movie) => (
-                    <div className="grid-item" key={movie.id} onClick={() => onClickMovie(movie)}>
-                      <div className="card mpovieInfo">
+                    <div className="grid-item" key={movie.id} onClick={() => history.push("/movieSheet", {id: movie.id})}>
+                      <div className="card movieInfo">
                         <div className="card__image">
                           {movie.poster_path ? (
                             <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />

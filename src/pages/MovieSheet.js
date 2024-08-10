@@ -1,21 +1,49 @@
-import '../styles/sheet.css';
+import '../styles/sheet.css'; 
 import '../styles/styles.css'; 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import Actor from "../components/Actor";
+import Movie from "../components/Movie";
 import * as scriptFunctions from '../script';
-import { useLocation } from 'react-router-dom';
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
+import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+import 'owl.carousel';
+import { Rating } from '../script';
+import { useHistory, useParams } from "react-router-dom";
 
 
+const MovieSheet = (props) => {
+  const { id: idM } = useParams();
+  const id = props.location.state?.id || idM; // Utilisation de location.state ou de useParams
+  const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=166b9170e2b5bafde803f3f96ee6f452`;
+  const URL_CREDITS = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US`;
+  const URL_SIMILAR = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=166b9170e2b5bafde803f3f96ee6f452`;
+  const history = useHistory();
+  const [detail, setDetail] = useState({});
+  const [genres, setGenres] = useState([]);
+  const [credits, setCredits] = useState([]); // actor cast
+  const [similar, setSimilar] = useState([]); // similar movies
 
-const MovieSheet = () => {
-  const movie = location.state.movie;
-  const location = useLocation();
+
   useEffect(() => {
+    axios.get(URL)
+      .then((res) => {
+        setDetail(res.data);
+        setGenres(res.data.genres);
+      })
+      axios.get(URL_CREDITS).then((res) => setCredits(res.data.cast));
+      axios.get(URL_SIMILAR).then((res) => setSimilar(res.data.results))
+
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des données :", error);
+      });
+
     scriptFunctions.initCarousel();
     scriptFunctions.updateYear();
     scriptFunctions.initReadMore();
-  }, []);
+  }, [URL, URL_CREDITS, URL_SIMILAR]);
 
   return (
     <div className='sheet'>
@@ -24,37 +52,31 @@ const MovieSheet = () => {
         <div className="container-fluid py-5">
           <div className="row align-items-start">
             <div className="col-12 col-md-4 mb-3 mb-md-0 text-center">
-              <img src={`http://image.tmdb.org/t/p/original${movie.poster_path}`} alt="image-film" />
+              <img src={`http://image.tmdb.org/t/p/original${detail.poster_path}`} alt="image-film" />
             </div>
             <div className="col-12 col-md-8 actor-details">
-              <h4 className="font-weight-bold py-3">Civil War (Civil War)</h4>
-              <h5 className="font-weight-bold">Personal Info :</h5>
+              <h4 className="font-weight-bold py-3">{detail.title} ({detail.original_title})</h4>
+              <h5 className="font-weight-bold">Release Date : {detail.release_date}</h5>
               <p className="py-3">
-                <strong>Known for :</strong> Acting
-              </p>
-              <p className="py-3">
-                <strong>Known Credit :</strong> 115
-              </p>
-              <p className="py-3">
-                <strong>Gender :</strong> Female
-              </p>
-              <p className="py-3">
-                <strong>Birthday :</strong> April 30, 1982
+                <strong>Genres :</strong> {genres.map((g) => (
+                <span
+                  className="type"
+                  key={g.id}
+                  onClick={() => history.push(`/categories/${g.id}`, { id: g.id, name: g.name })}
+                >
+                  {g.name},&nbsp; 
+                </span>
+              ))}
               </p>
               <p className="py-3 biography text-justify">
-                <strong>Biography :</strong> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-                took a galley of type and scrambled it to make a type specimen book. It has survived not only five
-                centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <strong>Synopsis :</strong>{detail.overview}
               </p>
               <div className="rating">
-                <strong>Note:</strong> ⭐⭐⭐⭐☆
+                <strong>Rating:</strong> <Rating movie={detail} />
               </div>
               <div className="centerer">
                 <div className="wrap">
-                  <a className="btn-5" href="#">
+                  <a className="btn-5" target='_blank' href={`https://api.themoviedb.org/3/movie/${detail.id}/videos?api_key=166b9170e2b5bafde803f3f96ee6f452`}>
                     See Trailer
                   </a>
                 </div>
@@ -69,12 +91,9 @@ const MovieSheet = () => {
           <div id="wrapper">
             <button className="nav-button left" onClick={scriptFunctions.handleClickGoBack}></button>
             <div id="carousel">
-              {['actor1.webp', 'actor2.webp', 'actor3.webp', 'actor4.webp', 'actor5.webp', 'actor6.webp', 'actor7.webp', 'actor8.webp'].map((src, index) => (
+            {credits.map((actor, index) => (
                 <div className="square" key={index}>
-                  <img src={src} alt={`Image ${index + 1}`} />
-                  <div className="item-desc">
-                    <h5 className="font-weight-bold">{['Kirsten Dunst Lee', 'Wagner Moura Joel', 'Cailee Spaeny Jessi', 'Stephen McKinley Sammy', 'Scarlett Johansson', 'Jason Statham', 'Angelina Jolie', 'Matt Damon'][index]}</h5>
-                  </div>
+                  <Actor actor={actor} onClickActor={() => history.push('/actorSheet', { id: actor.id })} />
                 </div>
               ))}
             </div>
@@ -88,14 +107,18 @@ const MovieSheet = () => {
           <div>
             <h2 className="line-title"></h2>
             <div className="owl-carousel custom-carousel owl-theme">
-              {['movie1.jpg', 'movie2.jpg', 'movie3.jpg', 'movie4.jpg', 'movie5.jpg', 'movie6.jpg'].map((src, index) => (
-                <div className="item active" style={{ backgroundImage: `url(${src})` }} key={index}>
-                  <div className="item-desc">
-                    <h5>{['La Planète des Singes', 'Civil War', 'RDR 2', 'Les Cartes du Mal', 'Atlas', 'The Fall Guy'][index]}</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                  </div>
-                </div>
-              ))}
+            {similar.map((movie, index) => (
+    <div
+      className="item active"
+      style={{ backgroundImage: `url(http://image.tmdb.org/t/p/original${movie.backdrop_path})` }}
+      key={index}
+    >
+      <div className="item-desc">
+        <h5>{movie.title}</h5>
+        <p>{movie.overview ? `${movie.overview.substring(0, 100)}...` : "No description available."}</p>
+      </div>
+    </div>
+  ))}
             </div>
           </div>
         </div>
