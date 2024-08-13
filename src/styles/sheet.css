@@ -21,7 +21,7 @@ body {
 }
 .sheet .rating {
   font-size: 1.5em;
-  color: gold;
+  color: #1C3144;
 }
 
 
@@ -146,95 +146,12 @@ html {
 .sheet .btn-5:hover:after {
   border-width: 80px 262.5px;
 }
-/*------------caroussel actors--------*/
- * {
-    user-select: none;
-    box-sizing: border-box;
-}
 
-
-.sheet .caroussel-actors {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%; 
-    margin: 0;
-    padding: 60px;
-    background: #596F62;
-}
-
-.sheet #wrapper {
-    display: flex;
-    align-items: center;
-    max-width: 1250px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.sheet #carousel {
-    display: flex;
-    overflow: hidden;
-    flex-grow: 1;
-}
-
-.sheet .square {
-    position: relative; 
-    cursor: pointer;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    color: #bbbbbb;
-    font-size: 18px; 
-    min-width: 250px;
-    height: 350px;
-    background-color: #ffffff14;
-    border-radius: 6px;
-    margin: 20px;
-    transition: 100ms ease-in-out;
-}
-.sheet .square {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.sheet .square img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.sheet .actor-name-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  color: white;
-  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-}
-.sheet .square:hover {
-    background-color: #ffffff27;
-    border-color: #f4f4f4;
-    color: #d2d2d2;
-}
-
-.sheet .item-desc {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6); /* fond semi-transparent */
-    color: white;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
+.center {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;     /* Centre verticalement */
+  height: 50vh;           /* Assure que le div prend toute la hauteur de la fenêtre */
 }
 
 .sheet .item-desc h3, .sheet .item-desc p {
@@ -266,6 +183,10 @@ html {
 
 .sheet .nav-button.left:hover {
     border-color: #596F62 #1C3144 #596F62;
+}
+
+.sheet .fa-star:before, .sheet .fa-star-half:before  {
+  color: gold;
 }
 
 /*-----caroussel-Movies--------*/
@@ -426,7 +347,7 @@ html {
   .sheet h2 {
     margin-bottom: 32px;
   }
-  .sheet h3 {
+ h5 {
     margin: 0 0 8px;
     font-size: 24px;
     line-height: 32px;
@@ -512,5 +433,37 @@ html {
     padding: 0 14px 5px;
     transform: translateY(calc(100% - 42px));
     -webkit-transform: translateY(calc(100% - 42px));
+  }
+}
+
+@media (max-width: 1100px) {
+  .sheet .carousel-title {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .sheet .game-section {
+    padding: 20px 10px;
+  }
+
+  .sheet .game-section .item {
+    width: 90%;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  .sheet .game-section .item.active {
+    width: 100%;
+  }
+
+  .sheet h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .sheet h3 {
+    font-size: 16px;
+    line-height: 22px;
   }
 }

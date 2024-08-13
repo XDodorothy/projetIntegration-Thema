@@ -77,25 +77,37 @@ html {
 .pagination .page-link.custom-link {
   cursor: pointer;
 }
-@media screen and (min-width: 992px) {
-  .site__wrapper .grid {
-    float: left;
-    width: 25%; 
+/* Responsive styles */
 
+/* Screens 1000px and above */
+@media screen and (min-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
   }
 }
-@media screen and (max-width: 991px) {
-  .site__wrapper .grid {
-    float: left;
-    width: 50%; 
+
+/* Screens under 1000px */
+@media screen and (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
   }
 }
-@media screen and (max-width: 600px) {
-  .site__wrapper .grid {
-    float: none;
-    width: 100%; 
+
+/* Screens under 820px */
+@media screen and (max-width: 820px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
   }
 }
+
+/* Screens under 500px */
+@media screen and (max-width: 500px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 column */
+  }
+}
+
+
 .actorlist .card__overlay {
   content: "";
   bottom: 0;
@@ -133,3 +145,4 @@ html {
   color: #596f62; 
   border-color: #596f62; 
 }
+

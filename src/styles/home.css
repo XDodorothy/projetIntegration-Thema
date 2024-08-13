@@ -234,6 +234,18 @@ footer h5 {
   border-color: #f4f4f4;
   color: #d2d2d2;
 }
+.actor-name-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
 .item-desc {
   position: absolute;
   bottom: 0;

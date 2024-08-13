@@ -55,7 +55,7 @@ const ActorList = () => {
                           {actor.profile_path ? (
                             <img src={`http://image.tmdb.org/t/p/original${actor.profile_path}`} alt="image-actor" />
                           ) : (
-                            <img src='/NoImageLogo.png' alt='image-film' />
+                            <img src='/NoImageLogo.png' alt='image-actor' />
                           )}
                           <div className="card__overlay">
                             <div className="card__overlay-content">

@@ -12,11 +12,10 @@ import 'owl.carousel';
 const ActorSheet = (props) => {
   const id = props.location.state.id;
   const URL = `https://api.themoviedb.org/3/person/${id}?api_key=96c53f5c4eea872e1526092d2ea94b36&language=en-US`;
-
   const [detail, setDetail] = useState({});
   const [knownForMovies, setKnownForMovies] = useState([]);
   const [otherMovies, setOtherMovies] = useState([]);
-
+  window.scrollTo({ top: 0, behavior: "instant" });
   useEffect(() => {
     axios.get(URL)
       .then((res) => {

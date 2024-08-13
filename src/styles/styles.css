@@ -224,7 +224,7 @@ img {
   opacity: 1;
   
 }
-.movieInfo .card__overlay-content {
+.movieInfo .card__overlay {
   opacity: 0 !important;
   
 }
@@ -234,7 +234,7 @@ img {
   z-index: 2;
 }
 
-.card__overlay-content:hover{
+.card__overlay:hover{
   opacity: 1 !important;
 }
 

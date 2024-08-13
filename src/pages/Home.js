@@ -1,14 +1,23 @@
 import '../styles/styles.css'; 
 import '../styles/home.css'; 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
+import Nav from "../components/Navigation";
+import Actor from "../components/Actor";
 import * as scriptFunctions from '../script';
-import { useHistory} from "react-router-dom";
+import 'owl.carousel/dist/assets/owl.carousel.min.css';
+import 'owl.carousel/dist/assets/owl.theme.default.min.css';
+import 'owl.carousel';
+import { useHistory, useParams } from "react-router-dom";
+import { Navigation, Autoplay} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 
-const Home = () => {
+
+
+const Home = (props) => {
 
   useEffect(() => {
     scriptFunctions.initHomeSlider();
@@ -18,23 +27,68 @@ const Home = () => {
 }, []);
 
 const history = useHistory();
-const onClickMovie = (movie) => {
-  history.push({
-    pathname: '/movieSheet',
-    state: { movie }
-  });
-};
+const id = props.location.state?.id
+const [detail, setDetail] = useState({});
+const URL_Trending = `https://api.themoviedb.org/3/trending/movie/day?api_key=166b9170e2b5bafde803f3f96ee6f452&page=1`;
+const URL_Romance = `https://api.themoviedb.org/3/discover/movie?&language=en-US&page=1&sort_by=popularity.desc&api_key=166b9170e2b5bafde803f3f96ee6f452&with_genres=10749`;
+const URL_Actor = `https://api.themoviedb.org/3/person/popular?api_key=166b9170e2b5bafde803f3f96ee6f452&language=en-US&page=1`;
+const URL_Popular = `https://api.themoviedb.org/3/movie/popular?api_key=a67b57849deb687f2cd49d7a8298b366&language=en-US&page=1`;
+const URL_Top = `https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&api_key=166b9170e2b5bafde803f3f96ee6f452&page=1`;
+const [actor, setActor] = useState([]); // actor popular
+const [popular, setPopular] = useState([]); // popular movies
+const [romance, setRomance] = useState([]); // romance movies
+const [trending, setTrending] = useState([]); // trending movies
+const [top, setTop] = useState([]); // top movies
 
+
+
+useEffect(() => {
+
+    axios.get(URL_Actor).then((res) => setActor(res.data.results));
+    axios.get(URL_Trending).then((res) => setTrending(res.data.results));
+    axios.get(URL_Popular).then((res) => setPopular(res.data.results));
+    axios.get(URL_Romance).then((res) => setRomance(res.data.results));
+    axios.get(URL_Top).then((res) => setTop(res.data.results.slice(0,3)))
+
+    .catch((error) => {
+      console.error("Erreur lors de la récupération des données :", error);
+    });
+
+  scriptFunctions.initCarousel();
+  scriptFunctions.updateYear();
+  scriptFunctions.initReadMore();
+}, [URL_Actor, URL_Popular, URL_Romance, URL_Trending, URL_Top]);
+
+const handleRedirect = (id) => {
+  history.push('/movieSheet', { id });
+};
   return (
     <div>
-      <Navigation />
+      <Nav />
       <section className="creative-parallax--slider" id="premium">
-  <div className="slider-inner">
-    <div className="slider-row">
-      <div className="parallax-slider slider-wrap">
-        <div className="swiper-wrapper">
-        <div className="swiper-slide" style={{ backgroundImage: "url('movie5.jpg')" }}>
-            <div className="swiper-slide--inner">
+            <div className="slider-inner">
+                <div className="slider-row">
+                    <div className="parallax-slider slider-wrap">
+                        <Swiper
+                            navigation
+                            autoplay={{ delay: 5000 }}
+                            modules={[Navigation, Autoplay]}
+                            className="swiper-wrapper"
+                        >
+                           {top.map((movie, index) => (
+                            
+                            <SwiperSlide
+                                className="swiper-slide"
+                                key={index}
+                                style={{ backgroundImage: `url(${
+                                  movie.backdrop_path
+                                    ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                                    : '/NoImageLogo.png'
+                                })`,
+                              }}
+                            >
+                             
+                               <div className="swiper-slide--inner">
               <div className="slide--bg">
                 <div className="slide-bg--inner"></div>
               </div>
@@ -47,13 +101,16 @@ const onClickMovie = (movie) => {
                   </span>
                 </div>
                 <div className="slide-main--heading py-5">
-                  <div className="from-left">MR-9: Do or Die</div>
-                  <div className="from-right">(2023)</div>
+                  <div className="from-left">{movie.title}</div>
+                  <div className="from-right">({movie.release_date.split('-')[0]})</div>
                 </div>
                 <div className="slide-cta">
-                  <a href="https://www.fiverr.com/aliali44/develop-or-customize-a-wordpress-theme" className="slide-btn gradient-btn fs-5">
+                <button 
+                          onClick={() => handleRedirect(movie.id)} 
+                          className="slide-btn gradient-btn fs-5"
+                        >
                     Show me more about this movie <span><i className="fa-solid fa-arrow-right"></i></span>
-                  </a>
+                  </button>
                 </div>
                 <div className="slide-badge">
                   <span className="patch-check">
@@ -68,89 +125,17 @@ const onClickMovie = (movie) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="swiper-slide" style={{ backgroundImage: "url('movie1.jpg')" }}>
-            <div className="swiper-slide--inner">
-              <div className="slide--bg">
-                <div className="slide-bg--inner"></div>
-              </div>
-              <div className="slide-detail">
-                <div className="slide-main--subheading">
-                  <img src="logo.png" alt="Théma-logo" width="200" className="mb-3" />
-                  <span className="fs-5 font-weight-bold">
-                    <br />WELCOME to ThéMa !<br />
-                    Your Best Movie Catalog... What's on at Your Home !
-                  </span>
+                            </SwiperSlide>
+                              ))}
+                        </Swiper>
+                       
+                        <div className="autoplay-progress">
+                            <div className="progress-fill"></div>
+                        </div>
+                    </div>
                 </div>
-                <div className="slide-main--heading py-5">
-                  <div className="from-left">Bad Boys for Life</div>
-                  <div className="from-right">(2020)</div>
-                </div>
-                <div className="slide-cta">
-                  <a href="https://www.fiverr.com/aliali44/develop-or-customize-a-wordpress-theme" className="slide-btn gradient-btn">
-                    Show me more about this movie <span><i className="fa-solid fa-arrow-right"></i></span>
-                  </a>
-                </div>
-                <div className="slide-badge">
-                  <span className="patch-check">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
-                      <path
-                        fill="currentColor"
-                        d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638l-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89l-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622l-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01l.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637l.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89l.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622l.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"
-                      />
-                    </svg>
-                  </span>
-                  <span className="badge-heading">Top Rated Movie</span>
-                </div>
-              </div>
             </div>
-          </div>
-          <div className="swiper-slide" style={{ backgroundImage: "url('movie5.jpg')" }}>
-            <div className="swiper-slide--inner">
-              <div className="slide--bg">
-                <div className="slide-bg--inner"></div>
-              </div>
-              <div className="slide-detail">
-                <div className="slide-main--subheading">
-                  <img src="logo.png" alt="Théma-logo" width="200" className="mb-3" />
-                  <span className="fs-5 font-weight-bold">
-                    <br />WELCOME to ThéMa !<br />
-                    Your Best Movie Catalog... What's on at Your Home !
-                  </span>
-                </div>
-                <div className="slide-main--heading py-5">
-                  <div className="from-left">Fast & Furious X</div>
-                  <div className="from-right">(2023)</div>
-                </div>
-                <div className="slide-cta">
-                  <a href="https://www.fiverr.com/aliali44/develop-or-customize-a-wordpress-theme" className="slide-btn gradient-btn">
-                    Show me more about this movie <span><i className="fa-solid fa-arrow-right"></i></span>
-                  </a>
-                </div>
-                <div className="slide-badge">
-                  <span className="patch-check">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
-                      <path
-                        fill="currentColor"
-                        d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638l-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89l-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622l-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01l.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637l.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89l.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622l.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"
-                      />
-                    </svg>
-                  </span>
-                  <span className="badge-heading">Top Rated Movie</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="swiper-button-next slide-btns"></div>
-        <div className="swiper-button-prev slide-btns"></div>
-        <div className="autoplay-progress">
-          <div className="progress-fill"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
   <div className="game-section pt-5">
     <div className="caroussel-title">
       <h5>Trending</h5>
@@ -158,42 +143,24 @@ const onClickMovie = (movie) => {
     <div>
       <span className="line-title"></span>
       <div className="owl-carousel custom-carousel owl-theme">
-        <div className="item active" style={{backgroundImage: "url(movie1.jpg)"}}>
+      {trending.map((movie, index) => (
+        <div
+          className={`item ${index === 0 ? 'active' : ''}`}
+          style={{
+            backgroundImage: `url(${
+              movie.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                : '/NoImageLogo.png'
+            })`,
+          }}
+          key={movie.id}
+        >
           <div className="item-desc">
-            <h5>La Planète des Singes</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <h5>{movie.title}</h5>
+            <p>{movie.overview}</p>
           </div>
         </div>
-        <div className="item" style={{backgroundImage: "url(movie2.jpg)"}}>
-          <div className="item-desc">
-            <h5>Civil War</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie3.jpg)"}}>
-          <div className="item-desc">
-            <h5>RDR 2</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Les Cartes du Mal</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Atlas</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>The Fall Guy</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
+      ))}
       </div>
     </div>
   </div>
@@ -216,30 +183,7 @@ const onClickMovie = (movie) => {
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           </div>
         </div>
-        <div className="item" style={{backgroundImage: "url(movie3.jpg)"}}>
-          <div className="item-desc">
-            <h5>RDR 2</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie3.jpg)"}}>
-          <div className="item-desc">
-            <h5>Les Cartes du Mal</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Atlas</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>The Fall Guy</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -262,30 +206,6 @@ const onClickMovie = (movie) => {
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           </div>
         </div>
-        <div className="item"style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>RDR 2</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Les Cartes du Mal</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Atlas</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>The Fall Guy</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -294,58 +214,15 @@ const onClickMovie = (movie) => {
       <h4 className="title-actor font-weight-bold">Popular Actors</h4>
     </div>
     <div id="wrapper">
-      <button className="nav-button left" onclick="handleClickGoBack()"></button>
+      <button className="nav-button left" onClick={scriptFunctions.handleClickGoBack}></button>
       <div id="carousel">
-        <div className="square">
-          <img src="actor1.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Kirsten Dunst Lee</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor2.webp" alt="Image 2"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Wagner Moura Joel</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor3.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Cailee Spaeny Jessi</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor4.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Stephen McKinley Sammy</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor5.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Scarlett Johansson</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor6.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Jason Statham</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor7.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Angelina Jolie</h5>
-          </div>
-        </div>
-        <div className="square">
-          <img src="actor8.webp" alt="Image 1"/>
-          <div className="item-desc">
-            <h5 className="font-weight-bold">Matt Damon</h5>
-          </div>
-        </div>
+      {actor.map((actor, index) => (
+                <div className="square" key={index}>
+                  <Actor actor={actor} onClickActor={() => history.push('/actorSheet', { id: actor.id })} />
+                </div>
+              ))}
       </div>
-      <button className="nav-button right" onclick="handleClickGoAhead()"></button>
+      <button className="nav-button right" onClick={scriptFunctions.handleClickGoAhead}></button>
     </div>
   </div>
 
