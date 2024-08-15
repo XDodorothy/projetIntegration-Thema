@@ -5,7 +5,6 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import Actor from "../components/Actor";
-import Movie from "../components/Movie";
 import * as scriptFunctions from '../script';
 import { Rating } from '../script';
 import { useHistory, useParams } from "react-router-dom";

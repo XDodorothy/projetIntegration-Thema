@@ -122,13 +122,6 @@ const updatePage = (newPage) => {
     );
   };
 
-  //Show movie sheet
-  const onClickMovie = (movie) => {
-    history.push({
-      pathname: '/movieSheet',
-      state: { movie }
-    });
-  };
 
   return (
     <React.Fragment>

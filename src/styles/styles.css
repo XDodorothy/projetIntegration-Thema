@@ -9,6 +9,7 @@ body {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   hyphens: auto;
+  overflow-x: hidden; /* Ajoutez cette ligne */
 }
 .search h1, .search h4, .search h5 {
   font-family: 'Prata', serif;
@@ -321,3 +322,215 @@ img {
     outline: none;
     box-shadow: none;
   }
+
+  /*Movie carousel*/
+.carousel{   
+  display: inline-table; 
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 4px 10px rgba(black, .15);
+  transform: translateZ(0);  
+  -webkit-overflow-scrolling:touch;
+
+  .touch &{ overflow:auto; } /* for tablets */
+
+  &[data-at*='left'] > .wrap{
+      &::before{ 
+        opacity:1;
+        text-indent:-50px; 
+    }
+  }
+  
+  &[data-at*='right'] > .wrap{
+      &::after{ 
+        opacity:1;
+        text-indent:-50px; 
+    }
+  }
+
+  /* scrollbar*/
+  &::after{  
+    content: '';
+    pointer-events:none;
+    position:absolute; 
+    z-index: 4;
+    bottom: -4px; 
+    left: 0;
+    background: #1C3144;
+    height: 4px;
+    border-radius: 4px;
+    opacity: 0;
+    width: var(--scrollWidth, 0);
+    left: var(--scrollLleft, 0);
+    transition: opacity .2s, bottom .2s;
+  }
+
+  &:hover{  
+    &::after{ opacity:1; bottom:-10px; }
+  }
+
+  > .wrap{ 
+    overflow:hidden;
+    border-radius: 8px - 8px/2;
+    width: fit-content;
+    
+    &::before, 
+    &::after{ 
+      content: '\2039'; 
+      opacity: 0; 
+      position: absolute; 
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 50px;
+      font-size: 80px;
+      text-indent:-30px;
+      line-height: 200px;
+      font-family: monospace;
+      color: #555;
+      font-weight: bold;
+      border-radius: 4px;
+      pointer-events: none;
+      transition: .2s ease-out; 
+      background:linear-gradient(to right, #1C3144 20%, transparent); 
+    }
+
+    &::after{ 
+      transform:rotate(180deg);
+      left: auto;
+      right:0; 
+    }
+
+    > ul{ 
+      list-style:none; 
+      white-space:nowrap; 
+      height:400px;
+
+      > li{ 
+          display:inline-block; 
+          vertical-align:middle; 
+          height:100%; 
+          margin:0 0 0 5px; 
+          position:relative; 
+          overflow:hidden; 
+          transition:0.25s ease-out;
+          &:first-child{ margin:0; }
+
+          > img{ 
+             display:block; 
+             height:100%; 
+             margin:auto; 
+      
+             position:relative; 
+             z-index:1; 
+             transition:1s ease; 
+          }
+          &:hover img{ transform:scale(1.3); }
+        }
+     }
+  }
+}
+.carousel .wrap ul li {
+  position: relative;
+  transition: transform 0.25s ease-out, z-index 0.25s ease-out;
+}
+
+.carousel .wrap ul li:hover {
+  transform: scale(1.3); /* Agrandit la carte à 110% */
+  z-index: 2; /* Passe l'élément en avant des autres */
+  cursor: pointer;
+}
+
+.carousel .wrap ul li img {
+  display: block;
+  height: 100%;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  transition: transform 1s ease; 
+}
+.carousel .wrap ul li img {
+  height: 100%;   /* Remplit la carte en hauteur */
+  width: 100%;    /* Remplit la carte en largeur */
+
+}
+.carousel .li {
+  width: 100%;
+}
+
+.carousel .wrap ul li:hover img {
+  transform: scale(1.3); /* Zoom supplémentaire sur l'image en hover */
+}
+
+.carousel .wrap ul li h5 {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  color: white;
+  background-color: #596f626e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+  font-size: 14px;
+  text-align: center; /* Centrer le texte */
+  white-space: normal; /* Permet au texte de passer à la ligne */
+  max-width: 90%; /* Limite la largeur pour s'adapter à la carte */
+  word-wrap: break-word; /* Permet de couper les mots trop longs */
+}
+
+.carousel .wrap ul li:hover h5 {
+  opacity: 1;
+}
+
+/* Responsive adjustments for 820px screens */
+@media (max-width: 820px) {
+  .carousel {
+    font-size: 16px; /* Adjust font size */
+    padding: 6px; /* Adjust padding */
+  }
+  
+  .carousel .wrap ul li {
+    margin: 0 4px; /* Adjust margin between items */
+  }
+
+  .carousel .wrap ul li img {
+    height: auto; /* Adjust image height to fit container */
+    width: 100%; /* Ensure images fill the width of the container */
+  }
+
+  .carousel .wrap ul li h5 {
+    font-size: 12px; /* Adjust font size for titles */
+  }
+}
+
+/* Responsive adjustments for 492px screens */
+@media (max-width: 492px) {
+  .carousel {
+    font-size: 14px; /* Further adjust font size */
+    padding: 4px; /* Further adjust padding */
+  }
+  
+  .carousel .wrap ul li {
+    margin: 0 2px; /* Reduce margin between items */
+  }
+
+  .carousel .wrap ul li img {
+    height: auto; /* Adjust image height to fit container */
+    width: 100%; /* Ensure images fill the width of the container */
+  }
+
+  .carousel .wrap ul li h5 {
+    font-size: 10px; /* Further adjust font size for titles */
+    max-width: 80%; /* Adjust max width for titles */
+  }
+
+  
+  .carousel .wrap ul {
+    white-space: nowrap; /* Prevent line breaks in carousel items */
+  }
+}
