@@ -20,7 +20,7 @@ const Navigation = (props) => {
   const onSearch = (e) => {
     e.preventDefault(); // Empêche le rechargement de la page
     if (keyword.trim()) /*enlever les espaces au début et à la fin et éviter des erreurs*/ {
-      history.push(`/search&keyword=${encodeURIComponent(keyword)}`);
+      history.push(`/search/?&keyword==${encodeURIComponent(keyword)}`);
     }
   }
   return (

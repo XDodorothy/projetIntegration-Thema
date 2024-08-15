@@ -44,6 +44,12 @@ body {
 html {
   font-size: 100%;
 }
+.sheet .carousel-title.trick {
+
+  background-color: transparent;
+  border: none;
+
+}
 
 .sheet .carousel-title {
   display: flex;
@@ -280,7 +286,7 @@ html {
 
   }
   .sheet h4 {
-    margin-left: 32px;
+        margin-left: 32px;
   }
   .sheet h3 {
     margin: 0 0 8px;

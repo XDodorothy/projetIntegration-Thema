@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import * as scriptFunctions from '../script';
 import HoverCarousel from '../script';
+import Actor from "../components/Actor";
 import { useHistory } from "react-router-dom";
 
 const ActorSheet = (props) => {
@@ -115,7 +116,14 @@ const ActorSheet = (props) => {
       </ul>
       </div>
     </div>
+ 
       </div>
+      <div className="carousel-actors">
+          <div className="carousel-title trick">
+            <h4></h4>
+          </div>
+
+        </div>
 
       <Footer />
     </div>

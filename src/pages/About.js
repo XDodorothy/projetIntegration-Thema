@@ -23,14 +23,14 @@ const About = () => {
         <div className="row d-flex justify-content-center">
           <div className="col-12 col-md-4 mb-3 text-end">
             <img
-              src="images/Dorothee.jpg"
+              src="/images/Dorothee.jpg"
               className="img-fluid rounded actor-image"
               alt="Dorothee"
             />
           </div>
           <div className="col-12 col-md-4 text-center ">
           <img
-              src="images/Hamanou.jpg"
+              src="/images/Hamanou.jpg"
               className="img-fluid rounded actor-image"
               alt="Hamanou"
             />

@@ -64,9 +64,10 @@ const MovieSheet = (props) => {
   }, [URL, URL_CREDITS, URL_SIMILAR, URL_VIDEOS]);
 
   return (
+  
     <div className='sheet'>
       <Navigation />
-      <div >
+      
         <div className="container-fluid py-5">
           <div className="row align-items-start">
             <div className="col-12 col-md-4 mb-3 mb-md-0 text-center">
@@ -102,24 +103,6 @@ const MovieSheet = (props) => {
             </div>
           </div>
         </div>
-        <div className="carousel-actors">
-          <div className="carousel-title">
-            <h4>Cast</h4>
-          </div>
-          <div className='center'>
-          <div id="wrapper">
-      <button className="nav-button left" onClick={scriptFunctions.handleClickGoBack}></button>
-      <div id="carousel">
-      {credits.map((actor, index) => (
-                <div className="square" key={index}>
-                  <Actor actor={actor} onClickActor={() => history.push('/actorSheet', { id: actor.id })} />
-                </div>
-              ))}
-      </div>
-      <button className="nav-button right" onClick={scriptFunctions.handleClickGoAhead}></button>
-    </div>
-    </div>
-        </div>
         <div className="game-section">
           <div className="carousel-title">
             <h4>Similar Movies</h4>
@@ -139,10 +122,31 @@ const MovieSheet = (props) => {
       </ul>
       </div>
     </div>
+ 
         </div>
+        <div className="carousel-actors">
+          <div className="carousel-title">
+            <h4>Cast</h4>
+          </div>
+          <div className='center'>
+          <div id="wrapper">
+      <button className="nav-button left" onClick={scriptFunctions.handleClickGoBack}></button>
+      <div id="carousel">
+      {credits.map((actor, index) => (
+                <div className="square" key={index}>
+                  <Actor actor={actor} onClickActor={() => history.push('/actorSheet', { id: actor.id })} />
+                </div>
+              ))}
       </div>
-      <Footer />
+      <button className="nav-button right" onClick={scriptFunctions.handleClickGoAhead}></button>
     </div>
+    </div>
+        </div>
+
+        <Footer />
+        </div>
+      
+    
   );
 };
 
