@@ -7,11 +7,9 @@ import Navigation from "../components/Navigation";
 import Actor from "../components/Actor";
 import Movie from "../components/Movie";
 import * as scriptFunctions from '../script';
-import 'owl.carousel/dist/assets/owl.carousel.min.css';
-import 'owl.carousel/dist/assets/owl.theme.default.min.css';
-import 'owl.carousel';
 import { Rating } from '../script';
 import { useHistory, useParams } from "react-router-dom";
+import HoverCarousel from '../script';
 
 
 const MovieSheet = (props) => {
@@ -27,9 +25,18 @@ const MovieSheet = (props) => {
   const [credits, setCredits] = useState([]); // actor cast
   const [similar, setSimilar] = useState([]); // similar movies
   const [trailerUrl, setTrailerUrl] = useState(""); // bande annonce
+  window.scrollTo({ top: 0, behavior: "instant" });
 
-
-
+  const handleMovieClick = (movieId) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    history.push("/movieSheet", { id: movieId });
+  };
+  useEffect(() => {
+    scriptFunctions.initHomeSlider();
+    scriptFunctions.initParallaxSlider();
+    const carouselElm = document.querySelector('.carousel');
+    new HoverCarousel(carouselElm);
+}, []);
   useEffect(() => {
     axios.get(URL)
       .then((res) => {
@@ -52,9 +59,9 @@ const MovieSheet = (props) => {
         console.error("Erreur lors de la récupération des données :", error);
       });
 
-    scriptFunctions.initCarousel();
     scriptFunctions.updateYear();
     scriptFunctions.initReadMore();
+
   }, [URL, URL_CREDITS, URL_SIMILAR, URL_VIDEOS]);
 
   return (
@@ -118,30 +125,21 @@ const MovieSheet = (props) => {
           <div className="carousel-title">
             <h4>Similar Movies</h4>
           </div>
-          <div>
-            <h2 className="line-title"></h2>
-            <div className="owl-carousel custom-carousel owl-theme">
-            {similar.map((movie, index) => (
-        <div
-          className={`item ${index === 0 ? 'active' : ''}`}
-          style={{
-            backgroundImage: `url(${
-              movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-                : '/NoImageLogo.png'
-            })`
-          }}
-          key={movie}
-          onClick={() => history.push("/movieSheet", {id: movie.id})}
-        >
-          <div className="item-desc">
+          <div className="carousel film">
+            <div className="wrap">
+              <ul>
+        {similar.map((movie) => (
+          <li  onClick={() => history.push("/movieSheet", {id: movie.id})}>
+            <img
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/NoImageLogo.png'}
+              alt={movie.title}
+            />
             <h5>{movie.title}</h5>
-            <p>{movie.overview}</p>
-          </div>
-        </div>
-      ))}
-            </div>
-          </div>
+          </li>
+        ))}
+      </ul>
+      </div>
+    </div>
         </div>
       </div>
       <Footer />

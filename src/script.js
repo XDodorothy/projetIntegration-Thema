@@ -1,7 +1,4 @@
 
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
-import 'owl.carousel';
 import 'swiper/swiper-bundle.css';
 import Swiper from 'swiper';
 
@@ -10,18 +7,7 @@ import Swiper from 'swiper';
 /* eslint-disable no-undef */
 
 
-// Caroussel movie
-export const initCarousel = () => {
-  $('.custom-carousel').owlCarousel({
-    autoWidth: true,
-    loop: true,
-  });
 
-  $('.custom-carousel .item').click(function () {
-    $('.custom-carousel .item').not($(this)).removeClass('active');
-    $(this).toggleClass('active');
-  });
-};
 
 // Year update
 export const updateYear = () => {
@@ -92,27 +78,7 @@ export const initHomeSlider = () => {
   });
 };
 
-// Owl Carousel initialization
-export const initOwlCarousel = () => {
-  $(document).ready(function () {
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        600: {
-          items: 3,
-        },
-        1000: {
-          items: 5,
-        },
-      },
-    });
-  });
-};
+
 
 // Parallax slider initialization
 export const initParallaxSlider = () => {
@@ -194,3 +160,107 @@ export function Rating({ movie }) {
     return <p className="rating"><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></p>;
   }
 }
+
+class HoverCarousel {
+  constructor(elm, settings) {
+    this.DOM = {
+      scope: elm,
+      wrap: elm.querySelector('ul').parentNode
+    };
+
+    this.containerWidth = 0;
+    this.scrollWidth = 0;
+    this.posFromLeft = 0; // Stripe position from the left of the screen
+    this.stripePos = 0;   // When relative mouse position inside the thumbs stripe
+    this.animated = null;
+    this.callbacks = {};
+
+    this.init();
+  }
+
+  init() {
+    this.bind();
+  }
+
+  destroy() {
+    this.DOM.scope.removeEventListener('mouseenter', this.callbacks.onMouseEnter);
+    this.DOM.scope.removeEventListener('mousemove', this.callbacks.onMouseMove);
+  }
+
+  bind() {
+    this.callbacks.onMouseEnter = this.onMouseEnter.bind(this);
+    this.callbacks.onMouseMove = e => {
+      if (this.mouseMoveRAF) 
+        cancelAnimationFrame(this.mouseMoveRAF);
+
+      this.mouseMoveRAF = requestAnimationFrame(this.onMouseMove.bind(this, e));
+    };
+
+    this.DOM.scope.addEventListener('mouseenter', this.callbacks.onMouseEnter);
+    this.DOM.scope.addEventListener('mousemove', this.callbacks.onMouseMove);
+  }
+
+  onMouseEnter(e) {
+    this.nextMore = this.prevMore = false; // reset
+
+    this.containerWidth = this.DOM.wrap.clientWidth;
+    this.scrollWidth = this.DOM.wrap.scrollWidth;
+    this.padding = 0.2 * this.containerWidth; // padding in percentage of the area which the mouse movement affects
+    this.posFromLeft = this.DOM.wrap.getBoundingClientRect().left;
+    var stripePos = e.pageX - this.padding - this.posFromLeft;
+    this.pos = stripePos / (this.containerWidth - this.padding * 2);
+    this.scrollPos = (this.scrollWidth - this.containerWidth) * this.pos;
+
+    // temporary add smoothness to the scroll 
+    this.DOM.wrap.style.scrollBehavior = 'smooth';
+
+    if (this.scrollPos < 0)
+      this.scrollPos = 0;
+
+    if (this.scrollPos > (this.scrollWidth - this.containerWidth))
+      this.scrollPos = this.scrollWidth - this.containerWidth;
+
+    this.DOM.wrap.scrollLeft = this.scrollPos;
+    this.DOM.scope.style.setProperty('--scrollWidth', (this.containerWidth / this.scrollWidth) * 100 + '%');
+    this.DOM.scope.style.setProperty('--scrollLeft', (this.scrollPos / this.scrollWidth) * 100 + '%');
+
+    // lock UI until mouse-enter scroll is finished, after approx 200ms
+    clearTimeout(this.animated);
+    this.animated = setTimeout(() => {
+      this.animated = null;
+      this.DOM.wrap.style.scrollBehavior = 'auto';
+    }, 200);
+
+    return this;
+  }
+
+  onMouseMove(e) {
+    if (this.animated) return;
+
+    this.ratio = this.scrollWidth / this.containerWidth;
+    
+    var stripePos = e.pageX - this.padding - this.posFromLeft;
+    
+    if (stripePos < 0)
+        stripePos = 0;
+
+    this.pos = stripePos / (this.containerWidth - this.padding * 2);
+    this.scrollPos = (this.scrollWidth - this.containerWidth) * this.pos;
+
+    this.DOM.wrap.scrollLeft = this.scrollPos;
+
+    if (this.scrollPos < (this.scrollWidth - this.containerWidth))
+      this.DOM.scope.style.setProperty('--scrollLeft', (this.scrollPos / this.scrollWidth) * 100 + '%');
+
+    this.prevMore = this.DOM.wrap.scrollLeft > 0;
+    this.nextMore = this.scrollWidth - this.containerWidth - this.DOM.wrap.scrollLeft > 5;
+
+    this.DOM.scope.setAttribute('data-at',
+      (this.prevMore ? 'left ' : ' ')
+      + (this.nextMore ? 'right' : '')
+    );
+  }
+}
+
+// Export the class for use in your React component
+export default HoverCarousel;

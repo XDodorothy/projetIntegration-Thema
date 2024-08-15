@@ -102,6 +102,10 @@ body {
   overflow-x: auto;
   margin-top: 20px;
 }
+.carousel.film {
+  width:100%;
+
+}
 .carousel .movie {
   flex: 0 0 auto;
   width: 200px;

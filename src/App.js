@@ -1,4 +1,5 @@
 import React from 'react';
+import * as $ from "jquery" // ---> this line
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import ActorSheet from './pages/ActorSheet';

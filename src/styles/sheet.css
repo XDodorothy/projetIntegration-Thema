@@ -244,102 +244,13 @@ html {
   outline: none !important;
 }
 
-/* -------- title style ------- */
-.sheet .line-title {
-  position: relative;
-  width: 400px;
-  color : #D7BE82;
-}
-.sheet .line-title::before,
-.sheet .line-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  border-radius: 2px;
-}
-.sheet .line-title::before {
-  width: 100%;
-  background: #f2f2f2;
-}
-.sheet .line-title::after {
-  width: 32px;
-  background: #e73700;
-}
+
 /* -------- Middle section style------- */
 .sheet .game-section {
   padding: 60px 50px;
   background-color: #596F62;
 }
-.sheet .game-section .owl-stage {
-  margin: 15px 0;
-  display: flex;
-  display: -webkit-flex;
-}
-.sheet .game-section .item {
-  margin: 0 15px 60px;
-  width: 320px;
-  height: 400px;
-  display: flex;
-  display: -webkit-flex;
-  align-items: flex-end;
-  -webkit-align-items: flex-end;
-  background: #343434 no-repeat center center / cover;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  cursor: pointer;
-}
-.sheet .game-section .item.active {
-  width: 500px;
-  box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
-}
-.sheet .game-section .item:after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-}
-.sheet .game-section .item-desc {
-  padding: 0 24px 12px;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  transform: translateY(calc(100% - 54px));
-  -webkit-transform: translateY(calc(100% - 54px));
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-}
-.sheet .game-section .item.active .item-desc {
-  transform: none;
-  -webkit-transform: none;
-}
-.sheet .game-section .item-desc p {
-  opacity: 0;
-  -webkit-transform: translateY(32px);
-  transform: translateY(32px);
-  transition: all 0.4s ease-in-out 0.2s;
-  -webkit-transition: all 0.4s ease-in-out 0.2s;
-}
-.sheet .game-section .item.active .item-desc p {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  transform: translateY(0);
-}
-.sheet .game-section .owl-theme.custom-carousel .owl-dots {
-  margin-top: -20px;
-  position: relative;
-  z-index: 5;
-}
+
 
 /*------------- responsive css ------------*/
 
@@ -356,18 +267,7 @@ html {
   .sheet .game-section {
     padding: 50px 30px;
   }
-  .sheet .game-section .item {
-    margin: 0 12px 60px;
-    width: 260px;
-    height: 360px;
-  }
-  .sheet .game-section .item.active {
-    width: 400px;
-  }
-  .sheet .game-section .item-desc {
-    transform: translateY(calc(100% - 46px));
-    -webkit-transform: translateY(calc(100% - 46px));
-  }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -386,18 +286,7 @@ html {
   .sheet .game-section {
     padding: 50px 30px 40px;
   }
-  .sheet .game-section .item {
-    margin: 0 12px 60px;
-    width: 240px;
-    height: 330px;
-  }
-  .sheet .game-section .item.active {
-    width: 360px;
-  }
-  .sheet .game-section .item-desc {
-    transform: translateY(calc(100% - 42px));
-    -webkit-transform: translateY(calc(100% - 42px));
-  }
+
 }
 
 @media (max-width: 767px) {
@@ -419,21 +308,7 @@ html {
   .sheet .game-section {
     padding: 30px 15px 20px;
   }
-  .sheet .game-section .item {
-    margin: 0 10px 40px;
-    width: 200px;
-    height: 280px;
-  }
-  .sheet .game-section .item.active {
-    width: 270px;
-    box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
-  }
-  .sheet .game-section .item-desc {
-    padding: 0 14px 5px;
-    transform: translateY(calc(100% - 42px));
-    -webkit-transform: translateY(calc(100% - 42px));
-  }
+
 }
 
 @media (max-width: 1100px) {
@@ -447,15 +322,7 @@ html {
     padding: 20px 10px;
   }
 
-  .sheet .game-section .item {
-    width: 90%;
-    height: auto;
-    margin: 10px 0;
-  }
 
-  .sheet .game-section .item.active {
-    width: 100%;
-  }
 
   .sheet h2 {
     font-size: 18px;

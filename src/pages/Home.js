@@ -1,34 +1,34 @@
 import '../styles/styles.css'; 
 import '../styles/home.css'; 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef }from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import Nav from "../components/Navigation";
 import Actor from "../components/Actor";
 import * as scriptFunctions from '../script';
-import 'owl.carousel/dist/assets/owl.carousel.min.css';
-import 'owl.carousel/dist/assets/owl.theme.default.min.css';
-import 'owl.carousel';
-import { useHistory, useParams } from "react-router-dom";
 import { Navigation, Autoplay} from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useHistory } from "react-router-dom";
+import HoverCarousel from '../script';
 
 
 
 
-
-const Home = (props) => {
+const Home = () => {
 
   useEffect(() => {
     scriptFunctions.initHomeSlider();
-    scriptFunctions.initOwlCarousel();
     scriptFunctions.initParallaxSlider();
-    scriptFunctions.initCarousel();
+    // Initialize carousels
+    if (trendingRef.current) new HoverCarousel(trendingRef.current);
+    if (popularRef.current) new HoverCarousel(popularRef.current);
+    if (romanceRef.current) new HoverCarousel(romanceRef.current);
 }, []);
 
 const history = useHistory();
-const id = props.location.state?.id
-const [detail, setDetail] = useState({});
+const trendingRef = useRef(null);
+const popularRef = useRef(null);
+const romanceRef = useRef(null);
 const URL_Trending = `https://api.themoviedb.org/3/trending/movie/day?api_key=166b9170e2b5bafde803f3f96ee6f452&page=1`;
 const URL_Romance = `https://api.themoviedb.org/3/discover/movie?&language=en-US&page=1&sort_by=popularity.desc&api_key=166b9170e2b5bafde803f3f96ee6f452&with_genres=10749`;
 const URL_Actor = `https://api.themoviedb.org/3/person/popular?api_key=166b9170e2b5bafde803f3f96ee6f452&language=en-US&page=1`;
@@ -53,8 +53,6 @@ useEffect(() => {
     .catch((error) => {
       console.error("Erreur lors de la récupération des données :", error);
     });
-
-  scriptFunctions.initCarousel();
   scriptFunctions.updateYear();
   scriptFunctions.initReadMore();
 }, [URL_Actor, URL_Popular, URL_Romance, URL_Trending, URL_Top]);
@@ -140,78 +138,67 @@ const handleRedirect = (id) => {
     <div className="caroussel-title">
       <h5>Trending</h5>
     </div>
-    <div>
-      <span className="line-title"></span>
-      <div className="owl-carousel custom-carousel owl-theme">
-      {trending.map((movie, index) => (
-        <div
-          className={`item ${index === 0 ? 'active' : ''}`}
-          style={{
-            backgroundImage: `url(${
-              movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-                : '/NoImageLogo.png'
-            })`,
-          }}
-          key={movie.id}
-        >
-          <div className="item-desc">
+    <div className="carousel film"  ref={trendingRef}>
+    <div className="wrap">
+      <ul>
+        {trending.map((movie) => (
+          <li  onClick={() => history.push("/movieSheet", {id: movie.id})}>
+            <img
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/NoImageLogo.png'}
+              alt={movie.title}
+            />
             <h5>{movie.title}</h5>
-            <p>{movie.overview}</p>
-          </div>
-        </div>
-      ))}
+          </li>
+        ))}
+      </ul>
       </div>
     </div>
   </div>
-  <div className="game-section">
-    <div className="caroussel-title">
-      <h5>Popular</h5>
-    </div>
-    <div>
-      <span className="line-title"></span>
-      <div className="owl-carousel custom-carousel owl-theme">
-        <div className="item active" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>La Planète des Singes</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Civil War</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-
-      </div>
+  <div className="game-section pt-5">
+  <div className="caroussel-title">
+    <h5>Popular</h5>
+  </div>
+  <div className="carousel film "  ref={popularRef}>
+    <div className="wrap ">
+      <ul>
+        {popular.map((movie) => (
+          <li onClick={() => history.push("/movieSheet", {id: movie.id})}>
+            <img
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/NoImageLogo.png'}
+              alt={movie.title}
+            />
+            <h5>{movie.title}</h5>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
-  <div className="game-section">
+</div>
+  <div className="game-section pb-5">
     <div className="caroussel-title">
       <h5>For a Cuddly Night</h5>
     </div>
-    <div>
-      <span className="line-title"></span>
-      <div className="owl-carousel custom-carousel owl-theme">
-        <div className="item active" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>La Planète des Singes</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
-        <div className="item" style={{backgroundImage: "url(movie1.jpg)"}}>
-          <div className="item-desc">
-            <h5>Civil War</h5>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
-        </div>
+   
+    <div className="carousel film "  ref={romanceRef}>
+    <div className="wrap">
+      <ul>
+        {romance.map((movie) => (
+          <li  onClick={() => history.push("/movieSheet", {id: movie.id})}>
+            <img
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/NoImageLogo.png'}
+              alt={movie.title}
+            />
+            <h5>{movie.title}</h5>
+          </li>
+        ))}
+      </ul>
       </div>
     </div>
+   
   </div>
   <div className="caroussel-actors">
     <div className="caroussel-title-actor">
-      <h4 className="title-actor font-weight-bold">Popular Actors</h4>
+      <h4 className="title-actor font-weight-bold text-center">Popular Actors</h4>
     </div>
     <div id="wrapper">
       <button className="nav-button left" onClick={scriptFunctions.handleClickGoBack}></button>

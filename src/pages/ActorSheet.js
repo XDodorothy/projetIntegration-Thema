@@ -5,32 +5,37 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import * as scriptFunctions from '../script';
-import 'owl.carousel/dist/assets/owl.carousel.min.css';
-import 'owl.carousel/dist/assets/owl.theme.default.min.css';
-import 'owl.carousel';
+import HoverCarousel from '../script';
+import { useHistory} from "react-router-dom";
 
 const ActorSheet = (props) => {
+
+
+  const history = useHistory();
   const id = props.location.state.id;
-  const URL = `https://api.themoviedb.org/3/person/${id}?api_key=96c53f5c4eea872e1526092d2ea94b36&language=en-US`;
+  const URL = `https://api.themoviedb.org/3/person/${id}?api_key=166b9170e2b5bafde803f3f96ee6f452&language=en-US`;
+  const URL_Known = `https://api.themoviedb.org/3/person/${id}/movie_credits`;
+  const URL_TV = `https://api.themoviedb.org/3/person/${id}/tv_credits`;
   const [detail, setDetail] = useState({});
   const [knownForMovies, setKnownForMovies] = useState([]);
-  const [otherMovies, setOtherMovies] = useState([]);
+  const [tv, setTv] = useState([]);
   window.scrollTo({ top: 0, behavior: "instant" });
   useEffect(() => {
     axios.get(URL)
       .then((res) => {
         setDetail(res.data);
-        setKnownForMovies(res.data.known_for);
-        setOtherMovies(res.data.credits ? res.data.credits.cast : []);
-      })
+      });
+      axios.get(URL_Known).then((res) => setKnownForMovies(res.data.results));
+      axios.get(URL_TV).then((res) => setTv(res.data.results))
       .catch((error) => {
         console.error("Erreur lors de la récupération des données :", error);
       });
 
-    scriptFunctions.initCarousel();
     scriptFunctions.updateYear();
     scriptFunctions.initReadMore();
-  }, [URL]);
+    const carouselElm = document.querySelector('.carousel');
+    new HoverCarousel(carouselElm);
+  }, [URL, URL_Known, URL_TV]);
 
   return (
     <div className='sheet'>
@@ -63,83 +68,43 @@ const ActorSheet = (props) => {
           <h4>Movies Playing into</h4>
         </div>
         <h4 className="line-title py-3 my-3">Known for</h4>
-        <div className="owl-carousel custom-carousel owl-theme">
-          <div className="item active" style={{ backgroundImage: 'url(movie1.jpg)' }}>
-            <div className="item-desc">
-              <h5>La Planète des Singes</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
+        <div className="carousel-title">
+            <h4>Similar Movies</h4>
           </div>
-          <div className="item" style={{ backgroundImage: 'url(movie2.jpg)' }}>
-            <div className="item-desc">
-              <h5>Civil War</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie3.jpg)' }}>
-            <div className="item-desc">
-              <h5>RDR 2</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie4.jpg)' }}>
-            <div className="item-desc">
-              <h5>Les Cartes du Mal</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie5.jpg)' }}>
-            <div className="item-desc">
-              <h5>Atlas</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie6.jpg)' }}>
-            <div className="item-desc">
-              <h5>The Fall Guy</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-        </div>
+          <div className="carousel film">
+            <div className="wrap">
+              <ul>
+        {knownForMovies.map((movie) => (
+          <li  onClick={() => history.push("/movieSheet", {id: movie.id})}>
+            <img
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/NoImageLogo.png'}
+              alt={movie.title}
+            />
+            <h5>{movie.title}</h5>
+          </li>
+        ))}
+      </ul>
+      </div>
+    </div>
         <h4 className="line-title py-3 my-3">Other Movies</h4>
-        <div className="owl-carousel custom-carousel owl-theme">
-          <div className="item active" style={{ backgroundImage: 'url(movie1.jpg)' }}>
-            <div className="item-desc">
-              <h5>La Planète des Singes</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
+        <div className="carousel-title">
+            <h4>Similar Movies</h4>
           </div>
-          <div className="item" style={{ backgroundImage: 'url(movie2.jpg)' }}>
-            <div className="item-desc">
-              <h5>Civil War</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie3.jpg)' }}>
-            <div className="item-desc">
-              <h5>Godzilla x Kong : Le Nouvel Empire</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie4.jpg)' }}>
-            <div className="item-desc">
-              <h5>Les Cartes du Mal</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie5.jpg)' }}>
-            <div className="item-desc">
-              <h5>Atlas</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-          <div className="item" style={{ backgroundImage: 'url(movie6.jpg)' }}>
-            <div className="item-desc">
-              <h5>The Fall Guy</h5>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-          </div>
-        </div>
+          <div className="carousel film">
+            <div className="wrap">
+              <ul>
+        {tv.map((movie) => (
+          <li  onClick={() => history.push("/movieSheet", {id: movie.id})}>
+            <img
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '/NoImageLogo.png'}
+              alt={movie.title}
+            />
+            <h5>{movie.title}</h5>
+          </li>
+        ))}
+      </ul>
+      </div>
+    </div>
       </div>
 
       <Footer />
